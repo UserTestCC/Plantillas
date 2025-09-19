@@ -103,17 +103,77 @@
 
 // plantillas servicio técnico 
  
-      
- 
 
+      // ================= SALUDOS =================
+{ name: 'Saludo estándar – 1',
+  body: 'Hola soy .............., asesor de servicio técnico Indurama. ¿En qué le puedo servir?' },
 
+{ name: 'Saludo estándar – 2',
+  body: 'Hola soy ..............., asesor de servicio técnico Indurama, su orden de atención está siendo procesada.' },
 
+{ name: 'Saludo fuera de garantía',
+  body: 'Hola soy ..............., asesor de servicio técnico Indurama. Su producto se encuentra fuera de garantía, la visita tendrá un costo aproximado por revisión de $20 a $23 dólares, más los valores por repuestos o mano de obra que nuestro técnico le indique en la visita.\n¿Desea agendar la orden de servicio?' },
 
+// ================= CONTENIDO PARA CLIENTE =================
+{ name: 'Orden dentro de garantía',
+  body: 'Gracias por la espera. Su orden de servicio técnico núm.: _________ ha sido generada con éxito. La fecha de visita es: _________. Por favor estar pendiente de la llamada del técnico, quien se contactará en el transcurso del día de su visita.\nRecuerde que la garantía cubre únicamente daños de fabricación; caso contrario la visita tendrá un costo. Por favor presentar una copia de la factura y cédula para validar su garantía.\nIndurama agradece su confianza, que tenga un excelente día.' },
 
+{ name: 'Orden fuera de garantía',
+  body: 'Gracias por su espera. La orden de servicio técnico ................... ha sido generada con éxito. La fecha de visita es: ...................., por favor estar al pendiente de la llamada del técnico, quien se contactará en el transcurso del día de visita.\nIndurama agradece su confianza, es un placer servirle.' },
 
+{ name: 'Orden LATAM',
+  body: 'Gracias por la espera, su orden de servicio técnico núm.: ….......... ha sido generada exitosamente. Por favor, tenga presente que desde nuestro centro de servicio se contactarán con usted en las próximas 72 hrs para coordinar el día de su visita; le solicitamos por favor estar al pendiente de la llamada.\nRecuerde presentar la copia de su (boleta/factura).\nIndurama agradece su confianza. ¡Que tenga un excelente día!' },
 
-      
-      
+{ name: 'Orden de instalación',
+  body: 'Gracias por la espera. La orden de servicio técnico núm.: _________ ha sido generada. La fecha de visita es: _________.\nRecuerde presentar una copia de la factura y cédula para validar la garantía. Agradecemos contar con todos los requisitos de instalación para garantizar una visita técnica efectiva.\nGracias por comunicarse con Indurama, que tenga un excelente día.' },
+
+{ name: 'Instalación foránea',
+  body: 'Gracias por la espera. La orden de servicio técnico núm.: _________ ha sido generada. La fecha de visita es: _________.\nLa movilización tendrá un costo de $8,67 y en algunos casos se puede generar un valor adicional según el tipo de instalación. Recuerde que debe contar con los requisitos previamente solicitados; adicional, debe presentar la copia de la factura y cédula para validar la garantía del producto.\nGracias por comunicarse con Indurama, que tenga un excelente día.' },
+
+{ name: 'Hora del técnico',
+  body: 'Le informamos que su orden de servicio: ......... se encuentra planificada para el día: ..................\nPuede comunicarse de manera directa con el técnico: .......................... al número: .................................\nRecuerde nuestros horarios de visita: desde las 9:00 am hasta 18h00 pm.\nGracias por comunicarse con Indurama, es un placer servirle.' },
+
+{ name: 'Garantía compresor / refrigerador',
+  body: 'Estimado cliente, nuestros productos cuentan con 1 año de garantía. Transcurrido este tiempo el servicio técnico tiene un costo y su garantía especial aplica:\n• Compresor: 3 o 10 años (dependiendo su modelo)\n• Tarjeta inversora: 3 años (dependiendo su modelo)\nEl técnico le indicará si su caso aplica para esta cobertura.\n¿Desea agendar su visita técnica?' },
+
+{ name: 'Electromenor (ECU)',
+  body: 'Le informamos que el servicio técnico para la línea electro menor se ofrece exclusivamente en nuestros centros de atención o en el almacén donde realizó la compra.\nPor favor acérquese con su artefacto, junto con una copia de la cédula y factura para brindarle soporte inmediato.\nAgradecemos su comprensión, que tenga un excelente día.' },
+
+{ name: 'Electromenor LATAM',
+  body: 'Le informamos que el servicio técnico para la línea de productos electro menor se ofrece exclusivamente en el almacén donde realizó la compra.\nPor favor acérquese con su artefacto, junto con una copia de la cédula y factura para brindarle soporte inmediato.\nAgradecemos su comprensión, que tenga un excelente día.' },
+
+{ name: 'No contactabilidad – Ecuador',
+  body: 'Estimado cliente, intentamos comunicarnos desde Indurama por una orden de servicio técnico. Por favor podría responder a este mensaje, o si desea puede contactarse con nosotros al 07 500 1010 o al 07 3700 600, de lunes a viernes de 08:00 am a 18:00 pm. Sábados de 8:00 am a 13:00 pm.\nNuestros operadores estarán gustosos de poder servirle. Por este medio no es posible atender llamadas; es mensajería de WhatsApp.\n¡Que tenga un excelente día!' },
+
+{ name: 'No contactabilidad – Perú',
+  body: 'Estimado cliente, intentamos comunicarnos desde Indurama por una orden de servicio técnico. Por favor podría responder a este mensaje, o si desea puede contactarse con nosotros al 080015222, de lunes a viernes de 08:00 am a 17:00 pm. Sábados de 8:00 am a 13:00 pm.\nNuestros operadores estarán gustosos de poder servirle. ¡Que tenga un excelente día!' },
+
+{ name: 'Campañas TPS – T1',
+  body: 'Le saluda ............., asesor de servicio técnico Indurama. Nos comunicamos con usted para realizar el seguimiento a la orden de servicio ( .......), pero no hemos recibido respuesta.\nPor favor puede responder a este mensaje o comunicarse directamente al 07 500 1010 de lunes a viernes de 08:00 am a 18:00 pm y sábados de 08:00 am a 13:00 pm.\nEstaremos gustosos de servirle. Indurama agradece su confianza.' },
+
+{ name: 'Cierre de conversación',
+  body: 'Lamentamos informarle que el tiempo de espera terminó. Si desea contactarnos puede comunicarse al 07 500 1010 o al 07 3700 600, de lunes a viernes de 08:00 am a 18:00 pm, y sábados de 08:00 am a 13:00 pm.\nEstaremos gustosos de servirle. ¡Que tenga un excelente día!' },
+
+{ name: 'Plantilla – Especificar direcciones',
+  body: 'Estimado cliente, es importante adjuntar la siguiente información para generar su orden de visita:\n\nProvincia/Departamento:\nCiudad/Municipio:\nBarrio/Urbanización:\nSector:\nCalle principal y secundaria:\nNúmero de casa:' },
+
+// ================= DESPEDIDAS =================
+{ name: 'Despedida estándar',
+  body: 'Nos alegra haberle asistido. Recuerde que en Indurama siempre estamos para servirle. ¡Hasta la próxima!' },
+
+{ name: 'Despedida – Cliente no desea atención',
+  body: 'Recuerde que contamos con técnicos calificados y certificados que garantizan un servicio de calidad para sus productos, los mejores precios, repuestos originales, etc., mejorando la vida útil de su producto.\nNuestros números de contacto son: 07 5001010 – 07 3700 600. WhatsApp 0999303030.\nSiempre a su servicio. ¡Que tenga un excelente día!' },
+
+// ================= UTILITARIOS =================
+{ name: 'Captador – Estamos atentos',
+  body: 'Estamos atentos a su gentil respuesta.' },
+
+{ name: 'Captador – ¿Algo más?',
+  body: '¿Hay algo más en lo que pueda asistirle?' },
+
+{ name: 'Trabaja con nosotros',
+  body: 'Muchas gracias por tu interés. Para hacernos llegar tu CV, por favor ingresa al siguiente link: https://www.linkedin.com/company/indurama\nTambién podrás revisar los procesos de selección que se encuentran abiertos.\nNos encantó que hayas vivido esta nueva experiencia con nosotros. Indurama agradece tu confianza.\n¡Gracias por escribirnos!' }
+    
 
 {
   name: 'boletin septiembre',
