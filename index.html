@@ -33,7 +33,19 @@
     .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     .empty{padding:28px;text-align:center;color:#9ca3af}
     .hl { background: rgba(255, 230, 0, 0.4); padding: 0 .1em; border-radius: 4px; }
-    .footer{margin:26px 0 10px;text-align:center;color:#94a3b8;font-size:13px}
+   
+    .footer.pill {
+  display: inline-block;
+  margin: 30px auto 20px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+    
     .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
     /* Texto vs HTML dentro de tarjetas */
@@ -716,6 +728,11 @@
       _resume(){ if(!this._timer) this._setupAutoplay(); }
     }
     customElements.define("x-carousel-card", XCarouselCard);
+
+<div class="footer pill">
+  Realizado por Edisson Fernando Fierro C.
+</div>
+    
   </script>
 </body>
 </html>
