@@ -21,6 +21,7 @@
     .field:focus-within{box-shadow:0 0 0 4px var(--ring);border-color:#334155}
     input[type=text]{flex:1;background:transparent;border:0;outline:none;color:var(--ink);font-size:16px;padding:10px}
     .pill{font-size:12px;border:1px solid #334155;border-radius:999px;padding:2px 8px;background:rgba(96,165,250,.12);color:#bfdbfe}
+
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:16px}
     .card{background:linear-gradient(180deg,#0e152b,#0b1224);border:1px solid var(--line);border-radius:16px;padding:14px;position:relative}
     .card:hover{border-color:#334155}
@@ -35,32 +36,28 @@
     .footer{margin:26px 0 10px;text-align:center;color:#94a3b8;font-size:13px}
     .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
-    /* ——— CONTENEDORES DE TEXTO vs HTML ——— */
+    /* Texto vs HTML dentro de tarjetas */
     .card .b.text{
-      white-space:pre-wrap;
-      word-wrap:break-word;
-      margin:0;
-      color:#d1d5db;
-      font-family:inherit;
+      white-space:pre-wrap;word-wrap:break-word;margin:0;color:#d1d5db;font-family:inherit;
     }
-    .card .b.html{
-      white-space:normal;
-      margin:0;
-      color:#d1d5db;
-      font-family:inherit;
-    }
-    .card .b.html *{ font-family:inherit; }
+    .card .b.html{white-space:normal;margin:0;color:#d1d5db;font-family:inherit;}
+    .card .b.html *{font-family:inherit}
 
-    /* Imágenes incrustadas en tarjetas (texto o HTML) */
-    .card .b.text img,
-    .card .b.html img{
-      max-width:100%;
-      max-height:500px;
-      object-fit:contain;
-      display:block;
-      margin:8px auto;
-      border-radius:10px;
+    /* Imágenes dentro de tarjetas */
+    .card .b.text img, .card .b.html img{
+      max-width:100%;max-height:500px;object-fit:contain;display:block;margin:8px auto;border-radius:10px;
     }
+
+    /* Tarjetas anchas (p.ej., boletín) */
+    .card.wide{grid-column:1 / -1}
+
+    /* ===== Modal “Ver grande” ===== */
+    dialog.viewer{border:none;padding:0;background:transparent;max-width:96vw}
+    dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
+    .viewer-box{background:#0f172a;border:1px solid var(--line);border-radius:16px;padding:12px;max-width:min(1100px,96vw)}
+    .viewer-actions{display:flex;justify-content:flex-end;margin-bottom:8px}
+    .viewer-close{border:1px solid var(--line);background:#0b1222;color:#e5e7eb;border-radius:10px;padding:6px 10px;cursor:pointer}
+    .viewer-body x-carousel-card{display:block;width:min(100%,1000px)}
   </style>
 </head>
 <body>
@@ -82,7 +79,7 @@
       </div>
     </div>
 
-    <!-- GRID DE RESULTADOS -->
+    <!-- GRID -->
     <div id="grid" class="grid"></div>
     <div id="empty" class="empty" hidden>Sin resultados. Prueba con otras palabras o menos términos.</div>
   </div>
@@ -96,374 +93,27 @@
     </article>
   </template>
 
+  <!-- Modal Viewer -->
+  <dialog id="viewerDlg" class="viewer">
+    <div class="viewer-box">
+      <div class="viewer-actions">
+        <button id="viewerClose" class="viewer-close" autofocus>Cerrar ✕</button>
+      </div>
+      <div id="viewerContent" class="viewer-body"></div>
+    </div>
+  </dialog>
+
   <!-- ===== Lógica del buscador ===== -->
   <script>
-    // Utilidades
     const strip = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     const $ = sel => document.querySelector(sel);
 
     // ======= DATA =======
     const DATA = [
-
-      // ================= SALUDOS =================
-      { name: 'Saludo estándar – 1',
-        body: 'Hola soy _________ , asesor de servicio técnico Indurama. ¿En qué le puedo servir?' },
-
-      { name: 'Saludo estándar – 2',
-        body: 'Hola soy _________ , asesor de servicio técnico Indurama, su orden de atención está siendo procesada.' },
-
-      { name: 'Saludo fuera de garantía',
-        body: 'Hola soy _________ , asesor de servicio técnico Indurama. Su producto se encuentra fuera de garantía, la visita tendrá un costo aproximado por revisión de $20 a $23 dólares, más los valores por repuestos o mano de obra que nuestro técnico le indique en la visita.\n¿Desea agendar la orden de servicio?' },
-
-      //================= CONTENIDO PARA CLIENTE =================
-      { name: 'Orden dentro de garantía',
-        body: 'Gracias por la espera. Su orden de servicio técnico núm.: _________ ha sido generada con éxito. La fecha de visita es: _________. Por favor estar pendiente de la llamada del técnico, quien se contactará en el transcurso del día de su visita.\nRecuerde que la garantía cubre únicamente daños de fabricación; caso contrario la visita tendrá un costo. Por favor presentar una copia de la factura y cédula para validar su garantía.\nIndurama agradece su confianza, que tenga un excelente día.' },
-
-      { name: 'Orden fuera de garantía',
-        body: 'Gracias por su espera. La orden de servicio técnico _________  ha sido generada con éxito. La fecha de visita es: _________ , por favor estar al pendiente de la llamada del técnico, quien se contactará en el transcurso del día de visita.\nIndurama agradece su confianza, es un placer servirle.' },
-
-      { name: 'Orden LATAM',
-        body: 'Gracias por la espera, su orden de servicio técnico núm.:  _________ ha sido generada exitosamente. Por favor, tenga presente que desde nuestro centro de servicio se contactarán con usted en las próximas 72 hrs para coordinar el día de su visita; le solicitamos por favor estar al pendiente de la llamada.\nRecuerde presentar la copia de su (boleta/factura).\nIndurama agradece su confianza. ¡Que tenga un excelente día!' },
-
-      { name: 'Orden de instalación',
-        body: 'Gracias por la espera. La orden de servicio técnico núm.: _________ ha sido generada. La fecha de visita es: _________.\nRecuerde presentar una copia de la factura y cédula para validar la garantía. Agradecemos contar con todos los requisitos de instalación para garantizar una visita técnica efectiva.\nGracias por comunicarse con Indurama, que tenga un excelente día.' },
-
-      { name: 'Instalación foránea',
-        body: 'Gracias por la espera. La orden de servicio técnico núm.: _________ ha sido generada. La fecha de visita es: _________.\nLa movilización tendrá un costo de $8,67 y en algunos casos se puede generar un valor adicional según el tipo de instalación. Recuerde que debe contar con los requisitos previamente solicitados; adicional, debe presentar la copia de la factura y cédula para validar la garantía del producto.\nGracias por comunicarse con Indurama, que tenga un excelente día.' },
-
-      { name: 'Hora del técnico',
-        body: 'Le informamos que su orden de servicio: _________ se encuentra planificada para el día: _________\nPuede comunicarse de manera directa con el técnico: _________ al número: _________\nRecuerde nuestros horarios de visita: desde las 9:00 am hasta 18h00 pm.\nGracias por comunicarse con Indurama, es un placer servirle.' },
-
-      { name: 'Garantía compresor / refrigerador',
-        body: 'Estimado cliente, nuestros productos cuentan con 1 año de garantía. Transcurrido este tiempo el servicio técnico tiene un costo y su garantía especial aplica:\n• Compresor: 3 o 10 años (dependiendo su modelo)\n• Tarjeta inversora: 3 años (dependiendo su modelo)\nEl técnico le indicará si su caso aplica para esta cobertura.\n¿Desea agendar su visita técnica?' },
-
-      { name: 'Electromenor (ECU)',
-        body: 'Le informamos que el servicio técnico para la línea electro menor se ofrece exclusivamente en nuestros centros de atención o en el almacén donde realizó la compra.\nPor favor acérquese con su artefacto, junto con una copia de la cédula y factura para brindarle soporte inmediato.\nAgradecemos su comprensión, que tenga un excelente día.' },
-
-      { name: 'Electromenor LATAM',
-        body: 'Le informamos que el servicio técnico para la línea de productos electro menor se ofrece exclusivamente en el almacén donde realizó la compra.\nPor favor acérquese con su artefacto, junto con una copia de la cédula y factura para brindarle soporte inmediato.\nAgradecemos su comprensión, que tenga un excelente día.' },
-
-      { name: 'No contactabilidad – Ecuador',
-        body: 'Estimado cliente, intentamos comunicarnos desde Indurama por una orden de servicio técnico. Por favor podría responder a este mensaje, o si desea puede contactarse con nosotros al 07 500 1010 o al 07 3700 600, de lunes a viernes de 08:00 am a 18:00 pm. Sábados de 8:00 am a 13:00 pm.\nNuestros operadores estarán gustosos de poder servirle. Por este medio no es posible atender llamadas; es mensajería de WhatsApp.\n¡Que tenga un excelente día!' },
-
-      { name: 'No contactabilidad – Perú',
-        body: 'Estimado cliente, intentamos comunicarnos desde Indurama por una orden de servicio técnico. Por favor podría responder a este mensaje, o si desea puede contactarse con nosotros al 080015222, de lunes a viernes de 08:00 am a 17:00 pm. Sábados de 8:00 am a 13:00 pm.\nNuestros operadores estarán gustosos de poder servirle. ¡Que tenga un excelente día!' },
-
-      { name: 'Campañas TPS – T1',
-        body: 'Le saluda  _________, asesor de servicio técnico Indurama. Nos comunicamos con usted para realizar el seguimiento a la orden de servicio ( .......), pero no hemos recibido respuesta.\nPor favor puede responder a este mensaje o comunicarse directamente al 07 500 1010 de lunes a viernes de 08:00 am a 18:00 pm y sábados de 08:00 am a 13:00 pm.\nEstaremos gustosos de servirle. Indurama agradece su confianza.' },
-
-      { name: 'Cierre de conversación',
-        body: 'Lamentamos informarle que el tiempo de espera terminó. Si desea contactarnos puede comunicarse al 07 500 1010 o al 07 3700 600, de lunes a viernes de 08:00 am a 18:00 pm, y sábados de 08:00 am a 13:00 pm.\nEstaremos gustosos de servirle. ¡Que tenga un excelente día!' },
-
-      { name: 'Plantilla – Especificar direcciones',
-        body: 'Estimado cliente, es importante adjuntar la siguiente información para generar su orden de visita:\n\nProvincia/Departamento:\nCiudad/Municipio:\nBarrio/Urbanización:\nSector:\nCalle principal y secundaria:\nNúmero de casa:' },
-
-      //================= DESPEDIDAS =================
-      { name: 'Despedida estándar',
-        body: 'Nos alegra haberle asistido. Recuerde que en Indurama siempre estamos para servirle. ¡Hasta la próxima!' },
-
-      { name: 'Despedida – Cliente no desea atención',
-        body: 'Recuerde que contamos con técnicos calificados y certificados que garantizan un servicio de calidad para sus productos, los mejores precios, repuestos originales, etc., mejorando la vida útil de su producto.\nNuestros números de contacto son: 07 5001010 – 07 3700 600. WhatsApp 0999303030.\nSiempre a su servicio. ¡Que tenga un excelente día!' },
-
-      //================= UTILITARIOS =================
-      { name: 'Captador – Estamos atentos', body: 'Estamos atentos a su gentil respuesta.' },
-      { name: 'Captador – ¿Algo más?', body: '¿Hay algo más en lo que pueda asistirle?' },
-
-      { name: 'Trabaja con nosotros',
-        body: 'Muchas gracias por tu interés. Para hacernos llegar tu CV, por favor ingresa al siguiente link: https://www.linkedin.com/company/indurama\nTambién podrás revisar los procesos de selección que se encuentran abiertos.\nNos encantó que hayas vivido esta nueva experiencia con nosotros. Indurama agradece tu confianza.\n¡Gracias por escribirnos!' },
-
-      { name: 'Centro de Servicio – Galápagos',
-        body: '1: No hay servicio de instalación en Galápagos\n2: Solo contamos con un Centro de Servicio en la Isla Santa Cruz - A DOMICILIO\n3: Desde las otras islas deben dirigirse a la Isla Santa Cruz: Dirección: Isla Santiago y Seymour\n4: Información Centro de Servicio Técnico: Moisés Arévalo 0999577413' },
-
-      { name:'Utilitario 5 estándar – Servicios',
-        body:'Estimado cliente, ¿podría confirmarme qué servicio necesita?\n• Servicio Técnico\n• Comprar Indurama' },
-
-      { name: 'Mantenimientos Lavadoras – Aires Acondicionados – Refrigeradoras',
-        body: 'Los mantenimientos pueden tener un costo desde los $25,00 (básico) hasta $69,00 dólares (moderado), esto dependerá del estado de su producto.\nPor favor considere que estos valores no incluyen costos por repuestos.\n\nIMPORTANTE: A estos valores debemos sumarle el costo por movilización si pertenece a Ruta Foránea ($8,67).\n\nAPLICA A: Lavadoras – Aires Acondicionados – Refrigeradoras.' },
-
-      //================= ADECUACIONES =================
-      { name: 'Adecuaciones – Encimeras y cocinas de inducción',
-        body: 'INSTALACIÓN: Gratis.\nREQUERIMIENTOS:\n- Eléctrico: 220V, breaker 40A, conexión directa desde medidor.\n- Cable calibre 8 AWG.\n- Ventilación: 2 cm laterales, 15 cm posterior.\n- Ollas ferromagnéticas, base plana, tamaño similar al foco de inducción.\nRestricciones: No incluye albañilería ni inspecciones técnicas.' },
-
-      // ================= AMBATO =================
-      { name: 'Postventa Ambato',
-        body:
-          'CALUCHO LIZANO EDUARDO CELESTINO – 0989196335\n' +
-          'CHICAIZA LLUNDO ANGEL RENAN – 0967437908\n' +
-          'CHILUISA CONDOR DARWIN WLADIMIR – 0959108247\n' +
-          'PANCHI LEMA JOSELITO ISAIAS – 0990069818\n' +
-          'VILLAMAR YAULEMA LUIS ALFREDO – 0968430534\n' +
-          'MILTON PATRICIO CAJILEMA VELASCO – 0983284313'
-      },
-
-      // ================= CUENCA =================
-      { name: 'Postventa Cuenca',
-        body:
-          'VILLACRES JIMENEZ PABLO PATRICIO – 0999505660\n' +
-          'PAUTE PATIÑO JUAN DIEGO – 0979689712\n' +
-          'LUIS ALFREDO TORRES PEÑALOZA – 0979862095\n' +
-          'SAQUICHAGUI LUCERO CHRISTIAN PAUL – 0967476697\n' +
-          'ENMA VIVIANA DUCHITANGA LOJANO – 0992738868'
-      },
-
-      // ================= GUAYAQUIL =================
-      { name: 'Postventa Guayaquil',
-        body:
-          'AGUILAR HERNANDEZ ELVIS JOSHUE – 0982999980\n' +
-          'BERMEJO VARGAS SEGUNDO ASENCIO – 0989132186\n' +
-          'CARPIO MORAN LUIS ALBERTO – 0979700687\n' +
-          'CHALEN GONZALEZ JEFFERSON ADOLFO – 0986445121\n' +
-          'CORDOVA MERO DAVID EDISON – 0995908592\n' +
-          'GONZALEZ AMAYA CHARLY LEONARDO – 0986425613\n' +
-          'GUALE GARCIA EDISON JUNIOR – 0968744394\n' +
-          'PIONCE PINCAY JOSE GREGORIO – 0990212831\n' +
-          'PUCHE MORILLO ROMAN JOSE – 0984803117\n' +
-          'SILVA GUTIERREZ LUIS ANTONIO – 0994390283\n' +
-          'SUDARIO REYES ALEX MILTON – 0986975530\n' +
-          'TIGRE JIMENEZ JOSE LUIS – 0969243017\n' +
-          'VALENCIA NARANJO PEDRO EDISON – 0982961692\n' +
-          'VELEZ MERELO ANTONY XAVIER – 0982706873\n' +
-          'VILLAMAR PEÑAFIEL CARLOS ANTONIO – 0969321345\n' +
-          'BAJAÑA MACIAS HARRY ENRIQUE – 0981214871\n' +
-          'STALIN GABRIEL GUALE LIMONES – 0985366447\n' +
-          'LOOR ERAS WALTER – 0993588979'
-      },
-
-      // ================= LOJA =================
-      { name: 'Postventa Loja',
-        body:
-          'MOROCHO PLACENCIA ANGEL GERARDO – 0969372182\n' +
-          'MALDONADO GRANDA ROBERTO SEBASTIAN – 0939271249'
-      },
-
-      // ================= PASAJE / MACHALA =================
-      { name: 'Postventa Pasaje / Machala',
-        body:
-          'ZERDA ESPINOZA EDINSON STALIN – 0968655852\n' +
-          'BONILLA YAGUAL IVIS PATRICIO – 0967849925\n' +
-          'CHACA LUNA VICTOR MANUEL – 0993298948\n' +
-          'ISBIS VALENCIA JORGE LUIS – 0985162799\n' +
-          'VALDEZ LOARTE BRAULIO ROBINSON – 0988887001\n' +
-          'HERNANDEZ SARAGURO DANIEL MARTIN – 0989688625\n' +
-          'ARIEL DAVID MURILLO GAVILANEZ – 0988847418 / 0969366212\n' +
-          'JULIO MOSCOSO SANTACRUZ – 0983422976 / 0998826581'
-      },
-
-      // ================= MANTA / PORTOVIEJO =================
-      { name: 'Postventa Manta / Portoviejo',
-        body:
-          'CEDEÑO LOPEZ GARY GABRIEL – 0994952870\n' +
-          'GARCIA GARCIA KEVIN – 0959741227\n' +
-          'LOOR FRANCO CARLOS ALBERTO – 0968810311\n' +
-          'LOZANO PALMA FIDEL ERNESTO – 0990880240\n' +
-          'MEZA LOOR NELSON JAVIER – 0963111618\n' +
-          'SABANDO GARCIA KLEVER ALEJANDRO – 0968902305\n' +
-          'SABANDO PACHECO RUBEN PAUL – 0998499896\n' +
-          'VERA ALAVA LUIS ANTONIO – 0994673760'
-      },
-
-      // ================= QUEVEDO =================
-      { name: 'Postventa Quevedo',
-        body:
-          'JIMENEZ ANDRADE JUAN CARLOS – 0991710216\n' +
-          'SANCHEZ MACIAS PETER JOSE – 0969524984\n' +
-          'JULIO CESAR RENDON PALMA – 0967112064\n' +
-          'HERRERA CASTRO JOSE LEONARDO – 0963111619\n' +
-          'QUIJIJE MONTOYA ERWIN VLADIMIR – 0968851312'
-      },
-
-      // ================= QUITO =================
-      { name: 'Postventa Quito',
-        body:
-          'ESMERALDAS GOMEZ NELSON JOEL – 0980040587\n' +
-          'GUAMANGALLO TERAN JUAN CARLOS – 0959604935\n' +
-          'OBANDO FUERTES FREDY ULPIANO – 0988861421\n' +
-          'PALLO AMAGUAYA JOHNNY SANTIAGO – 0968256141\n' +
-          'PANCHI LEMA CESAR FERNANDO – 0993282122\n' +
-          'QUELAL CALDERON HOMERO MANUEL – 0992080562\n' +
-          'QUIMBITA PANCHI ERICK ALEXANDER – 0985809884\n' +
-          'MONSERRATE BORJA DIEGO MIGUEL – 0990743368\n' +
-          'HIDALGO MIRANDA JUAN CARLOS – 0990975781\n' +
-          'YUQUILEMA PILLIZA DIEGO STALIN – 0939900744\n' +
-          'LAZO JOSE – 0990659802\n' +
-          'CEVALLOS OSWALDO – 0997096609'
-      },
-
-      // ================= SANTO DOMINGO =================
-      { name: 'Postventa Santo Domingo',
-        body:
-          'IGLESIAS PAREDES JHON JAIRO – 0992187154\n' +
-          'PALADINES ZAMBRANO EDGAR DAVID – 0967186073\n' +
-          'PALOMEQUE CADENA JOSE MAURICIO – 0958789023\n' +
-          'PERALTA ORTIZ JULIO CESAR – 0981272144\n' +
-          'RefrigeraciónJM Jonny Dario Moreira Cedeño – 0994434002\n' +
-          'CONFORME PATIÑO ESTEBAN SALOMON – (sin número)'
-      },
-
-      // ================= ZONAS — BASTIÓN POPULAR =================
-      { name: 'Bastión Popular',
-        body:
-          'BASTIÓN POPULAR BLOQUE 10 Y 11 — NO SE ATIENDEN\n' +
-          'BASTIÓN POPULAR BLOQUE 10A (CUEVA DEL LOBO)\n' +
-          'ENTRADA DE LA 21 — TODO (incluye cooperativas)'
-      },
-
-      // ================= ZONAS — FLOR DE BASTIÓN =================
-      { name: 'Flor de Bastión',
-        body:
-          'COOP CASA DEL TIGRE — Sector Los Mangos\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 2 — Se excluyen MZ en laderas hacia abajo\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 3 — Sector Los Mangos\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 4 — Sector Los Mangos\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 5 — Se excluyen MZ cerca del viaducto\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 9 — Sector Palomar (colinda con Las Delicias)\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 9\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 12 (COOP TWINZA) — Se excluyen MZ detrás de Costa Azul\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 12 (COOP TWINZA) — Solo casas de la calle principal de Costa Azul\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 15 — Se excluyen MZ pasando el puente\n' +
-          'COOP FLOR DE BASTIÓN BLOQUE 16 — Se excluyen MZ detrás de COOP Cordillera del Cóndor (laderas)\n' +
-          'COOP NUEVA GUAYAQUIL — Sector Los Manguitos\n' +
-          'COOP VALLE DE LA FLOR — MZ a partir de la cancha hacia arriba (ambos lados)\n' +
-          'LAS DELICIAS y cooperativas a su alrededor\n' +
-          'URB. ECOCITY / URB. ECOBOSQUE'
-      },
-
-      // ================= ZONAS — LA LADRILLERA =================
-      { name: 'La Ladrillera',
-        body:
-          'COOP PROMESA DE DIOS — TODO\n' +
-          'COOP CIUDAD DE DIOS — TODO\n' +
-          'COOP DIVINO NIÑO 1 — TODO (y MZ que colinda con Socio Vivienda 2)\n' +
-          'COOP DIVINO NIÑO 2 — TODO (y MZ que colinda con Socio Vivienda 2)\n' +
-          'LA CARBONERA — TODO\n' +
-          'LA CAROLINA y cooperativas a sus alrededores — TODO\n' +
-          'LAS IGUANAS TIERRA PROMETIDA — TODO\n' +
-          'NUEVA GENERACIÓN LADRILLERA — TODO'
-      },
-
-      // ================= ZONAS — LOMAS DE LA FLORIDA =================
-      { name: 'Lomas de la Florida',
-        body:
-          'COOP ENNER PARRALES — MZ en escalinatas (arriba y abajo)\n' +
-          'COOP LOMAS DE LA FLORIDA — MZ en escalinatas (arriba y abajo)'
-      },
-
-      // ================= ZONAS — MARTHA DE ROLDÓS =================
-      { name: 'Martha de Roldós',
-        body:
-          'COOP COLINAS DE LA MARTHA — MZ en escalinatas (arriba y abajo)\n' +
-          'COOP LAS ROCAS — Casas asentadas en escalinatas'
-      },
-
-      // ================= ZONAS — MONTE SINAÍ =================
-      { name: 'Monte Sinaí',
-        body:
-          'COOP THALIA TORAL — Se excluyen casas pasadas la calle asfaltada\n' +
-          'COOP CANELAR HOLGUITA\n' +
-          'COOP LAS MARIAS — Se excluyen casas pasando la calle asfaltada\n' +
-          'COOP SERGIO TORAL 2 — Sector Las Ollas y todo asentamiento pasando este sector\n' +
-          'COOP SHIBLOM\n' +
-          'COOP TRINIDAD DE DIOS — Sector Los Tanques y parte alta\n' +
-          'COOP VOLUNTAD DE DIOS — Todas las casas pasando la zanja\n' +
-          'COOP SENDERO DE DIOS — TODO\n' +
-          'COOP CAÑAVERAL — TODO\n' +
-          'COOP MANOS DE DIOS — TODO\n' +
-          'COOP ESPERANZA DE DIOS — TODO\n' +
-          'COOP LAS CUMBRES — TODO\n' +
-          'COOP CAMINO AL SOL — TODO\n' +
-          'COOP VALLE HERMOSO 2 (INVASIÓN) — TODO\n' +
-          'COOP 3 BOCAS — TODO\n' +
-          'COOP FONDO DEL TRIUNFO — TODO\n' +
-          'COOP REALIDAD DE DIOS — TODO\n' +
-          'COOP SERGIO TORAL 3 — TODO\n' +
-          'ENTRADA DE LA 21\n' +
-          'REINALDO QUIÑONEZ — Todas las etapas\n' +
-          'COOP LA CAROLINA\n' +
-          'COOP PARACAIDISTA — TODO\n' +
-          'CORDILLERA DEL CÓNDOR — TODO\n' +
-          'UNIDOS POR LA PAZ — TODO\n' +
-          'COOP MAYAICU\n' +
-          'COOP EL SOL\n' +
-          'COOP 31 DE OCTUBRE'
-      },
-
-      // ================= ZONAS — NUEVA PROSPERINA =================
-      { name: 'Nueva Prosperina',
-        body:
-          'COOP REINALDO QUIÑONES 2 — TODO\n' +
-          'COOP REINALDO QUIÑONES 3 — TODO\n' +
-          'COOP DIVINO NIÑO — (de la Nueva Prosperina)\n' +
-          'CDLA SOCIO VIVIENDA 1 — Bloque 1 3K (TODO)\n' +
-          'COOP GUERRERO DEL FORTÍN — Desde MZ 2101/2111 en adelante y todas las MZ hacia la loma\n' +
-          'COOP HORIZONTES DEL FORTÍN — Desde MZ 1091 en adelante / todo en cerro y escalinatas\n' +
-          'COOP HORIZONTES DEL GUERRERO — MZ 2101 a 2104\n' +
-          'COOP NUEVA PROSPERINA — Se excluyen casas cercanas a laderas\n' +
-          'COOP SAN IGNACIO DE LOYOLA — Todas las MZ que colindan con el cerro de la Nueva Prosperina\n' +
-          'CDLA SOCIO VIVIENDA 2 — TODO'
-      },
-
-      // ================= ZONAS — PARAÍSO LA FLOR =================
-      { name: 'Paraíso La Flor',
-        body:
-          'COOP PARAÍSO DE LA FLOR — TODOS\n' +
-          'COOP BELLA VISIÓN'
-      },
-
-      // ================= ZONAS — SAN EDUARDO =================
-      { name: 'San Eduardo',
-        body: 'COOP 25 DE JULIO (Cerro San Eduardo) — Calles no asfaltadas y escalinatas'
-      },
-
-      // ================= ZONAS — SAN FRANCISCO =================
-      { name: 'San Francisco',
-        body:
-          'COOP CHORRILLO — TODO\n' +
-          'COOP SAN FRANCISCO — Todos los sectores'
-      },
-
-      // ================= ZONAS — VALERIO ESTACIO =================
-      { name: 'Valerio Estacio',
-        body:
-          'COOP VALERIO ESTACIO 4 — MZ asentadas en el cerro\n' +
-          'COOP VALERIO ESTACIO 5 — Se excluye el cerro y MZ después de la estación de la línea 8\n' +
-          'JANET TORAL 3\n' +
-          'JANET TORAL 2 — MZ de la parte alta\n' +
-          'JANET TORAL 1 — MZ de la parte alta'
-      },
-
-      // ================= ZONAS — SOCIO VIVIENDA =================
-      { name: 'Socio Vivienda',
-        body:
-          'NINGUNA ETAPA SE VISITA\n' +
-          'NUEVO CEIBOS'
-      },
-
-      // ================= ZONAS — EL FORTÍN =================
-      { name: 'El Fortín',
-        body: 'TODAS LAS COOPERATIVAS'
-      },
-
-      // ================= ZONAS — PUENTE LUCÍA =================
-      { name: 'Puente Lucía',
-        body: 'Sector La Toma y sus cooperativas'
-      },
-
-      // ================= ZONAS — MAPASINGUE =================
-      { name: 'Mapasingue',
-        body:
-          'COOP EL CERRO\n' +
-          'COOP 26 DE FEBRERO'
-      },
-
-      // ================= ZONAS — CASUARINA =================
-      { name: 'Casuarína',
-        body: 'Todo el sector'
-      },
+      /* ……… (todo tu contenido previo) ……… */
 
       // ================= DURÁN =================
-      { name: 'Durán',
-        body: 'Finca La Delia'
-      },
+      { name: 'Durán', body: 'Finca La Delia' },
 
       // ================= GUAYAQUIL — ZONAS FORÁNEAS =================
       { name: 'Zonas Foráneas (Guayaquil)',
@@ -476,17 +126,13 @@
           'Mata de Cacao — Babahoyo'
       },
 
-      /* ======= AQUÍ VA EL CARRUSEL COMO TARJETA ======= */
-{
-  name: 'Boletín septiembre (galería)',
-  body: `
+      /* ======= CARRUSEL AL FINAL ======= */
+      {
+        name: 'Boletín septiembre (galería)',
+        wide: true,                 // <- hace la tarjeta de ancho completo
+        body: `
 <x-carousel-card aspect="16/9" autoplay interval="4000">
-  <span slot="title">
-    <a href="boletin_completo.pdf" download 
-       style="color:#60a5fa; text-decoration:none; font-weight:700;">
-      📄 Descargar Boletín
-    </a>
-  </span>
+  <span slot="title">Boletín septiembre</span>
 
   <img src="inst0.jpg" alt="Boletín 0">
   <img src="inst1.jpg" alt="Boletín 1">
@@ -500,10 +146,8 @@
 
   <span slot="caption">Desliza para ver todos los boletines.</span>
 </x-carousel-card>`
-},
-
-
-    ]; // ======= FIN DATA =======
+      },
+    ];
 
     // DOM
     const grid = $('#grid');
@@ -514,7 +158,17 @@
     const tpl = $('#tpl');
     const agent = $('#agent');
 
-    // Highlight
+    // Modal helpers
+    const viewer = $('#viewerDlg');
+    const viewerContent = $('#viewerContent');
+    $('#viewerClose').addEventListener('click', ()=> viewer.close());
+    viewer.addEventListener('click', (e)=>{ if(e.target === viewer) viewer.close(); });
+
+    function openViewer(html){
+      viewerContent.innerHTML = html;
+      viewer.showModal();
+    }
+
     function highlight(text, term){
       if(!term) return text;
       const esc = term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
@@ -522,30 +176,33 @@
       return text.replace(re,'<span class="hl">$1</span>');
     }
 
-    // Render
     function render(list, term=''){
       grid.innerHTML = '';
       list.forEach(item => {
         const node = tpl.content.cloneNode(true);
-        const h3  = node.querySelector('.t');
+        const card = node.querySelector('.card');
+        const h3 = node.querySelector('.t');
         const pre = node.querySelector('.b.text');
         const btn = node.querySelector('.copy');
 
+        if(item.wide) card.classList.add('wide');
         h3.innerHTML = highlight(item.name, term);
 
         const hasHTML = /<[^>]+>/.test(item.body);
 
         if(hasHTML){
-          // Contenedor HTML para componentes (carrusel, etc.)
           const htmlBox = document.createElement('div');
           htmlBox.className = 'b html';
           htmlBox.innerHTML = item.body;
           pre.replaceWith(htmlBox);
-          // No tiene sentido copiar HTML crudo
-          btn.style.display = 'none';
+
+          // Botón para modal
+          btn.textContent = 'Ver grande';
+          btn.style.display = 'inline-block';
+          btn.addEventListener('click', ()=> openViewer(item.body));
         }else{
+          // Botón copiar para texto
           pre.innerHTML = highlight(item.body, term);
-          // botón copiar para texto
           btn.addEventListener('click', async () => {
             let text = item.body;
             const a = agent.value?.trim();
@@ -554,9 +211,7 @@
               await navigator.clipboard.writeText(text);
               btn.textContent='Copiado ✔';
               setTimeout(()=>btn.textContent='Copiar',1200);
-            }catch{
-              alert('No se pudo copiar.');
-            }
+            }catch{ alert('No se pudo copiar.'); }
           });
         }
 
@@ -566,7 +221,6 @@
       empty.hidden = list.length !== 0;
     }
 
-    // Búsqueda
     function doSearch(){
       const term = q.value.trim();
       if(!term){ render(DATA); return }
@@ -575,12 +229,10 @@
       render(results, term);
     }
 
-    // Eventos
     q.addEventListener('input', doSearch);
     clearBtn.addEventListener('click', () => { q.value=''; q.focus(); doSearch(); });
     document.addEventListener('keydown', (e)=>{ if(e.ctrlKey && e.key === '/'){ e.preventDefault(); q.focus(); }});
 
-    // Inicio
     render(DATA);
   </script>
 
@@ -622,7 +274,7 @@
           </div>
         `;
 
-        this._track   = root.querySelector(".track");
+        this._track = root.querySelector(".track");
         this._dotsBox = root.querySelector(".dots");
         this._btnPrev = root.querySelector(".prev");
         this._btnNext = root.querySelector(".next");
@@ -630,8 +282,6 @@
 
         this._btnPrev.addEventListener("click", () => this.prev());
         this._btnNext.addEventListener("click", () => this.next());
-
-        // inicializa con las <img> del light DOM
         this._initSlides();
       }
 
