@@ -32,7 +32,7 @@
     .btn.ghost{background:transparent}
     .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     .empty{padding:28px;text-align:center;color:#9ca3af}
-    .hl { background: rgba(255, 230, 0, 0.5); color: #000; padding: 0 .1em; border-radius: 4px; }
+    .hl { background: rgba(255, 230, 0, 0.3); color: #000; padding: 0 .1em; border-radius: 4px; }
     .footer{margin:26px 0 10px;text-align:center;color:#94a3b8;font-size:13px}
     .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
@@ -43,7 +43,8 @@
     .card .b.html{white-space:normal;margin:0;color:#d1d5db;font-family:inherit;}
     .card .b.html *{font-family:inherit}
 
-    /* Imágenes dentro de tarjetas */
+    /*imag dentro de la tarjeta */
+    
     .card .b.text img, .card .b.html img{
       max-width:100%;max-height:500px;object-fit:contain;display:block;margin:8px auto;border-radius:10px;
     }
@@ -110,10 +111,10 @@
 
     // ======= DATA =======
     const DATA = [
-      /* ……… (todo tu contenido previo) ……… */
+      /* plantillas " aqui pueden editar las plantillas con el formato js */
 
      
-      // ================= SALUDOS =================
+      //  SALUDOS  
       { name: 'Saludo estándar – 1',
         body: 'Hola soy ___ , asesor de servicio técnico Indurama. ¿En qué le puedo servir?' },
 
@@ -123,7 +124,7 @@
       { name: 'Saludo fuera de garantía',
         body: 'Hola soy ___ , asesor de servicio técnico Indurama. Su producto se encuentra fuera de garantía, la visita tendrá un costo aproximado por revisión de $20 a $23 dólares, más los valores por repuestos o mano de obra que nuestro técnico le indique en la visita.\n¿Desea agendar la orden de servicio?' },
 
-      //================= CONTENIDO PARA CLIENTE =================
+      //  CONTENIDO  
       { name: 'Orden dentro de garantía',
         body: 'Gracias por la espera. Su orden de servicio técnico núm.: ___ ha sido generada con éxito. La fecha de visita es: ___. Por favor estar pendiente de la llamada del técnico, quien se contactará en el transcurso del día de su visita.\nRecuerde que la garantía cubre únicamente daños de fabricación; caso contrario la visita tendrá un costo. Por favor presentar una copia de la factura y cédula para validar su garantía.\nIndurama agradece su confianza, que tenga un excelente día.' },
 
@@ -166,14 +167,14 @@
       { name: 'Plantilla – Especificar direcciones',
         body: 'Estimado cliente, es importante adjuntar la siguiente información para generar su orden de visita:\n\nProvincia/Departamento:\nCiudad/Municipio:\nBarrio/Urbanización:\nSector:\nCalle principal y secundaria:\nNúmero de casa:' },
 
-      //================= DESPEDIDAS =================
+      // DESPEDIDAS  
       { name: 'Despedida estándar',
         body: 'Nos alegra haberle asistido. Recuerde que en Indurama siempre estamos para servirle. ¡Hasta la próxima!' },
 
       { name: 'Despedida – Cliente no desea atención',
         body: 'Recuerde que contamos con técnicos calificados y certificados que garantizan un servicio de calidad para sus productos, los mejores precios, repuestos originales, etc., mejorando la vida útil de su producto.\nNuestros números de contacto son: 07 5001010 – 07 3700 600. WhatsApp 0999303030.\nSiempre a su servicio. ¡Que tenga un excelente día!' },
 
-      //================= UTILITARIOS =================
+      // UTILITARIOS 
       { name: 'Captador – Estamos atentos', body: 'Estamos atentos a su gentil respuesta.' },
       { name: 'Captador – ¿Algo más?', body: '¿Hay algo más en lo que pueda asistirle?' },
 
@@ -189,11 +190,11 @@
       { name: 'Mantenimientos Lavadoras – Aires Acondicionados – Refrigeradoras',
         body: 'Los mantenimientos pueden tener un costo desde los $25,00 (básico) hasta $69,00 dólares (moderado), esto dependerá del estado de su producto.\nPor favor considere que estos valores no incluyen costos por repuestos.\n\nIMPORTANTE: A estos valores debemos sumarle el costo por movilización si pertenece a Ruta Foránea ($8,67).\n\nAPLICA A: Lavadoras – Aires Acondicionados – Refrigeradoras.' },
 
-      //================= ADECUACIONES =================
+      // ADECUACIONES 
       { name: 'Adecuaciones – Encimeras y cocinas de inducción',
         body: 'INSTALACIÓN: Gratis.\nREQUERIMIENTOS:\n- Eléctrico: 220V, breaker 40A, conexión directa desde medidor.\n- Cable calibre 8 AWG.\n- Ventilación: 2 cm laterales, 15 cm posterior.\n- Ollas ferromagnéticas, base plana, tamaño similar al foco de inducción.\nRestricciones: No incluye albañilería ni inspecciones técnicas.' },
 
-      // ================= AMBATO =================
+      //  AMBATO  
       { name: 'Postventa Ambato',
         body:
           'CALUCHO LIZANO EDUARDO CELESTINO – 0989196335\n' +
@@ -204,7 +205,7 @@
           'MILTON PATRICIO CAJILEMA VELASCO – 0983284313'
       },
 
-      // ================= CUENCA =================
+      //   CUENCA  
       { name: 'Postventa Cuenca',
         body:
           'VILLACRES JIMENEZ PABLO PATRICIO – 0999505660\n' +
@@ -214,7 +215,7 @@
           'ENMA VIVIANA DUCHITANGA LOJANO – 0992738868'
       },
 
-      // ================= GUAYAQUIL =================
+      //   GUAYAQUIL 
       { name: 'Postventa Guayaquil',
         body:
           'AGUILAR HERNANDEZ ELVIS JOSHUE – 0982999980\n' +
@@ -237,14 +238,14 @@
           'LOOR ERAS WALTER – 0993588979'
       },
 
-      // ================= LOJA =================
+      //  LOJA  
       { name: 'Postventa Loja',
         body:
           'MOROCHO PLACENCIA ANGEL GERARDO – 0969372182\n' +
           'MALDONADO GRANDA ROBERTO SEBASTIAN – 0939271249'
       },
 
-      // ================= PASAJE / MACHALA =================
+      //   PASAJE / MACHALA  
       { name: 'Postventa Pasaje / Machala',
         body:
           'ZERDA ESPINOZA EDINSON STALIN – 0968655852\n' +
@@ -257,7 +258,7 @@
           'JULIO MOSCOSO SANTACRUZ – 0983422976 / 0998826581'
       },
 
-      // ================= MANTA / PORTOVIEJO =================
+      //   MANTA / PORTOVIEJO  
       { name: 'Postventa Manta / Portoviejo',
         body:
           'CEDEÑO LOPEZ GARY GABRIEL – 0994952870\n' +
