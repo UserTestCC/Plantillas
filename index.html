@@ -47,32 +47,7 @@
   margin: 8px auto;    /* centrada */
   border-radius: 10px; /* esquinas redondeadas */
 }
-/* Fondo oscuro al ampliar */
-#imgModal {
-  display: none;              /* oculto por defecto */
-  position: fixed;
-  z-index: 9999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-}
 
-/* Imagen ampliada */
-#imgModal img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  animation: zoomIn .3s ease;
-}
-
-/* Animación */
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
-}
     
   </style>
 </head>
