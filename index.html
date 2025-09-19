@@ -490,6 +490,94 @@
           'Mata de Cacao — Babahoyo'
       },
 
+//tarifarios peru
+
+      {
+  name: 'Tarifario Perú – Servicio Técnico',
+  body: `
+<table>
+  <thead>
+    <tr>
+      <th>Producto / Servicio</th>
+      <th>Precio C/IGV (S/)</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Servicio Técnico a Domicilio (Línea Blanca)</td><td>100,00</td><td>Lavadoras, Cocinas, Hornos, Secadoras, Refrigeradoras, Microondas</td></tr>
+    <tr><td>Servicio Técnico en Taller</td><td>—</td><td>Licuadoras, equipos pequeños</td></tr>
+    <tr><td>Carga de gas R-600A / R-134a</td><td>330,00</td><td>Incluye movilidad de traslado</td></tr>
+    <tr><td>Carga de gas R-600A / R-134a (Side by Side)</td><td>380,00</td><td>Incluye movilidad de traslado</td></tr>
+    <tr><td>Servicio Técnico TV</td><td>100,00</td><td>Todo TV</td></tr>
+  </tbody>
+</table>
+<p class="muted">* Precios incluyen IGV. Movilidad incluida donde se indica.</p>
+`
+},
+{
+  name: 'Tarifario Perú – Mantenimientos',
+  body: `
+<table>
+  <thead>
+    <tr>
+      <th>Mantenimiento</th>
+      <th>Precio C/IGV (S/)</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Lavadora carga superior</td><td>300,00</td><td>Se descuentan S/ 100 del servicio si el cliente acepta el presupuesto. Incluye movilidad.</td></tr>
+    <tr><td>Secadora</td><td>200,00</td><td>—</td></tr>
+    <tr><td>Refrigeradora Side by Side</td><td>250,00</td><td>—</td></tr>
+    <tr><td>Refrigeradora Top Mount</td><td>200,00</td><td>—</td></tr>
+    <tr><td>Cocina (4 hornillas)</td><td>280,00</td><td>—</td></tr>
+    <tr><td>Cocina (5+ hornillas)</td><td>380,00</td><td>—</td></tr>
+    <tr><td>Campana 60 cm</td><td>180,00</td><td>—</td></tr>
+    <tr><td>Campana 90 cm</td><td>200,00</td><td>—</td></tr>
+    <tr><td>Campana decorativa</td><td>300,00</td><td>—</td></tr>
+  </tbody>
+</table>
+<p class="muted">* Precios incluyen IGV.</p>
+`
+},
+{
+  name: 'Tarifario Perú – Instalaciones',
+  body: `
+<table>
+  <thead>
+    <tr>
+      <th>Instalación / Servicio</th>
+      <th>Precio C/IGV (S/)</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Instalación básica de cocina (solo GLP en cilindro/balón)</td><td>60,00</td><td>Gas Natural lo gestiona la empresa de gas (no brindamos ese paso).</td></tr>
+    <tr><td>Instalación cocina GLP (gas centralizado del edificio)</td><td>120,00</td><td>Desde cilindro centralizado hacia el departamento.</td></tr>
+    <tr><td>Instalación de lavadoras</td><td>0,00</td><td>Requisito: caño jardinero con rosca de 3/8”.</td></tr>
+    <tr><td>Retiro de puertas (Side by Side)</td><td>120,00</td><td>—</td></tr>
+    <tr><td>Conversiones FDG / Reconversiones</td><td>120,00</td><td>—</td></tr>
+    <tr><td>Cambio de sentido de apertura (389, 439)</td><td>0,00</td><td>—</td></tr>
+    <tr><td>Cambio de sentido de apertura (639DN, 698, 698N)</td><td>0,00</td><td>—</td></tr>
+    <tr><td>Instalación de encimera y hornos empotrables</td><td>0,00</td><td>Gratis. Si es GLP, se instala; si es Gas Natural, el técnico realiza la conversión y la empresa de gas realiza la instalación.</td></tr>
+    <tr><td>Productos campanas</td><td>0,00</td><td>Instalación gratis.</td></tr>
+    <tr><td>Conversión de GLP a Gas Natural (cocinas)</td><td>0,00</td><td>—</td></tr>
+  </tbody>
+</table>
+<p class="muted">* Precios incluyen IGV. Ver requisitos indicados.</p>
+`
+},
+{
+  name: 'Tarifario Perú – Notas y llamadas',
+  body: `
+<ul>
+  <li><strong>Llamada gratuita:</strong> orientación sin costo.</li>
+  <li><strong>Secadora 7 kg:</strong> viene lista para <em>Gas Natural</em>. La <em>instalación</em> la realiza la empresa de gas (no Servicio Técnico).</li>
+  <li><strong>Instalación de secadora 20 kg:</strong> <strong>GRATIS</strong>.</li>
+</ul>
+<p class="muted">* Sujeto a cobertura y disponibilidad.</p>
+`
+},
 
 
       
@@ -520,6 +608,9 @@
   <span slot="caption">Desliza para ver todos los boletines.</span>
 </x-carousel-card>`
       },
+
+
+      
     ];
 
     // DOM
