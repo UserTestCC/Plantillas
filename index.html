@@ -70,24 +70,6 @@
       </div>
     </div>
 
-    <!-- ===== Carrusel (fuera de DATA, no rompe nada) ===== -->
-    <x-carousel-card aspect="16/9" autoplay interval="2000" style="margin-top:14px;margin-bottom:10px;">
-      <span slot="title">Boletín septiembre</span>
-
-      <!-- Usa los nombres que ya tienes -->
-      <img src="inst0.jpg" alt="Boletín 0">
-      <img src="inst1.jpg" alt="Boletín 1">
-      <img src="inst2.jpg" alt="Boletín 2">
-      <img src="inst3.jpg" alt="Boletín 3">
-      <img src="inst4.jpg" alt="Boletín 4">
-      <img src="inst5.jpg" alt="Boletín 5">
-      <img src="inst6.jpg" alt="Boletín 6">
-      <img src="inst7.jpg" alt="Boletín 7">
-      <img src="inst8.jpg" alt="Boletín 8">
-
-      <span slot="caption">Desliza para ver todos los boletines.</span>
-    </x-carousel-card>
-
     <!-- Grid de resultados -->
     <div id="grid" class="grid"></div>
     <div id="empty" class="empty" hidden>Sin resultados. Prueba con otras palabras o menos términos.</div>
@@ -165,56 +147,39 @@
         body: 'Estimado cliente, es importante adjuntar la siguiente información para generar su orden de visita:\n\nProvincia/Departamento:\nCiudad/Municipio:\nBarrio/Urbanización:\nSector:\nCalle principal y secundaria:\nNúmero de casa:' },
 
       //================= DESPEDIDAS =================
-      { name: 'Despedida estándar',
-        body: 'Nos alegra haberle asistido. Recuerde que en Indurama siempre estamos para servirle. ¡Hasta la próxima!' },
-
-      { name: 'Despedida – Cliente no desea atención',
-        body: 'Recuerde que contamos con técnicos calificados y certificados que garantizan un servicio de calidad para sus productos, los mejores precios, repuestos originales, etc., mejorando la vida útil de su producto.\nNuestros números de contacto son: 07 5001010 – 07 3700 600. WhatsApp 0999303030.\nSiempre a su servicio. ¡Que tenga un excelente día!' },
+      { name: 'Despedida estándar', body: 'Nos alegra haberle asistido. Recuerde que en Indurama siempre estamos para servirle. ¡Hasta la próxima!' },
+      { name: 'Despedida – Cliente no desea atención', body: 'Recuerde que contamos con técnicos calificados y certificados que garantizan un servicio de calidad para sus productos, los mejores precios, repuestos originales, etc., mejorando la vida útil de su producto.\nNuestros números de contacto son: 07 5001010 – 07 3700 600. WhatsApp 0999303030.\nSiempre a su servicio. ¡Que tenga un excelente día!' },
 
       //================= UTILITARIOS =================
       { name: 'Captador – Estamos atentos', body: 'Estamos atentos a su gentil respuesta.' },
       { name: 'Captador – ¿Algo más?', body: '¿Hay algo más en lo que pueda asistirle?' },
-
-      { name: 'Trabaja con nosotros',
-        body: 'Muchas gracias por tu interés. Para hacernos llegar tu CV, por favor ingresa al siguiente link: https://www.linkedin.com/company/indurama\nTambién podrás revisar los procesos de selección que se encuentran abiertos.\nNos encantó que hayas vivido esta nueva experiencia con nosotros. Indurama agradece tu confianza.\n¡Gracias por escribirnos!' },
-
-      { name: 'Centro de Servicio – Galápagos',
-        body: '1: No hay servicio de instalación en Galápagos\n2: Solo contamos con un Centro de Servicio en la Isla Santa Cruz - A DOMICILIO\n3: Desde las otras islas deben dirigirse a la Isla Santa Cruz: Dirección: Isla Santiago y Seymour\n4: Información Centro de Servicio Técnico: Moisés Arévalo 0999577413' },
-
-      { name:'Utilitario 5 estándar – Servicios',
-        body:'Estimado cliente, ¿podría confirmarme qué servicio necesita?\n• Servicio Técnico\n• Comprar Indurama' },
-
-      { name: 'Mantenimientos Lavadoras – Aires Acondicionados – Refrigeradoras',
-        body: 'Los mantenimientos pueden tener un costo desde los $25,00 (básico) hasta $69,00 dólares (moderado), esto dependerá del estado de su producto.\nPor favor considere que estos valores no incluyen costos por repuestos.\n\nIMPORTANTE: A estos valores debemos sumarle el costo por movilización si pertenece a Ruta Foránea ($8,67).\n\nAPLICA A: Lavadoras – Aires Acondicionados – Refrigeradoras.' },
+      { name: 'Trabaja con nosotros', body: 'Muchas gracias por tu interés. Para hacernos llegar tu CV, por favor ingresa al siguiente link: https://www.linkedin.com/company/indurama\nTambién podrás revisar los procesos de selección que se encuentran abiertos.\nNos encantó que hayas vivido esta nueva experiencia con nosotros. Indurama agradece tu confianza.\n¡Gracias por escribirnos!' },
+      { name: 'Centro de Servicio – Galápagos', body: '1: No hay servicio de instalación en Galápagos\n2: Solo contamos con un Centro de Servicio en la Isla Santa Cruz - A DOMICILIO\n3: Desde las otras islas deben dirigirse a la Isla Santa Cruz: Dirección: Isla Santiago y Seymour\n4: Información Centro de Servicio Técnico: Moisés Arévalo 0999577413' },
+      { name:'Utilitario 5 estándar – Servicios', body:'Estimado cliente, ¿podría confirmarme qué servicio necesita?\n• Servicio Técnico\n• Comprar Indurama' },
+      { name: 'Mantenimientos Lavadoras – Aires Acondicionados – Refrigeradoras', body: 'Los mantenimientos pueden tener un costo desde los $25,00 (básico) hasta $69,00 dólares (moderado), esto dependerá del estado de su producto.\nPor favor considere que estos valores no incluyen costos por repuestos.\n\nIMPORTANTE: A estos valores debemos sumarle el costo por movilización si pertenece a Ruta Foránea ($8,67).\n\nAPLICA A: Lavadoras – Aires Acondicionados – Refrigeradoras.' },
 
       //================= ADECUACIONES =================
-      { name: 'Adecuaciones – Encimeras y cocinas de inducción',
-        body: 'INSTALACIÓN: Gratis.\nREQUERIMIENTOS:\n- Eléctrico: 220V, breaker 40A, conexión directa desde medidor.\n- Cable calibre 8 AWG.\n- Ventilación: 2 cm laterales, 15 cm posterior.\n- Ollas ferromagnéticas, base plana, tamaño similar al foco de inducción.\nRestricciones: No incluye albañilería ni inspecciones técnicas.' },
+      { name: 'Adecuaciones – Encimeras y cocinas de inducción', body: 'INSTALACIÓN: Gratis.\nREQUERIMIENTOS:\n- Eléctrico: 220V, breaker 40A, conexión directa desde medidor.\n- Cable calibre 8 AWG.\n- Ventilación: 2 cm laterales, 15 cm posterior.\n- Ollas ferromagnéticas, base plana, tamaño similar al foco de inducción.\nRestricciones: No incluye albañilería ni inspecciones técnicas.' },
 
       // ================= AMBATO =================
-      { name: 'Postventa Ambato',
-        body:
+      { name: 'Postventa Ambato', body:
           'CALUCHO LIZANO EDUARDO CELESTINO – 0989196335\n' +
           'CHICAIZA LLUNDO ANGEL RENAN – 0967437908\n' +
           'CHILUISA CONDOR DARWIN WLADIMIR – 0959108247\n' +
           'PANCHI LEMA JOSELITO ISAIAS – 0990069818\n' +
           'VILLAMAR YAULEMA LUIS ALFREDO – 0968430534\n' +
-          'MILTON PATRICIO CAJILEMA VELASCO – 0983284313'
-      },
+          'MILTON PATRICIO CAJILEMA VELASCO – 0983284313' },
 
       // ================= CUENCA =================
-      { name: 'Postventa Cuenca',
-        body:
+      { name: 'Postventa Cuenca', body:
           'VILLACRES JIMENEZ PABLO PATRICIO – 0999505660\n' +
           'PAUTE PATIÑO JUAN DIEGO – 0979689712\n' +
           'LUIS ALFREDO TORRES PEÑALOZA – 0979862095\n' +
           'SAQUICHAGUI LUCERO CHRISTIAN PAUL – 0967476697\n' +
-          'ENMA VIVIANA DUCHITANGA LOJANO – 0992738868'
-      },
+          'ENMA VIVIANA DUCHITANGA LOJANO – 0992738868' },
 
       // ================= GUAYAQUIL =================
-      { name: 'Postventa Guayaquil',
-        body:
+      { name: 'Postventa Guayaquil', body:
           'AGUILAR HERNANDEZ ELVIS JOSHUE – 0982999980\n' +
           'BERMEJO VARGAS SEGUNDO ASENCIO – 0989132186\n' +
           'CARPIO MORAN LUIS ALBERTO – 0979700687\n' +
@@ -232,19 +197,15 @@
           'VILLAMAR PEÑAFIEL CARLOS ANTONIO – 0969321345\n' +
           'BAJAÑA MACIAS HARRY ENRIQUE – 0981214871\n' +
           'STALIN GABRIEL GUALE LIMONES – 0985366447\n' +
-          'LOOR ERAS WALTER – 0993588979'
-      },
+          'LOOR ERAS WALTER – 0993588979' },
 
       // ================= LOJA =================
-      { name: 'Postventa Loja',
-        body:
+      { name: 'Postventa Loja', body:
           'MOROCHO PLACENCIA ANGEL GERARDO – 0969372182\n' +
-          'MALDONADO GRANDA ROBERTO SEBASTIAN – 0939271249'
-      },
+          'MALDONADO GRANDA ROBERTO SEBASTIAN – 0939271249' },
 
       // ================= PASAJE / MACHALA =================
-      { name: 'Postventa Pasaje / Machala',
-        body:
+      { name: 'Postventa Pasaje / Machala', body:
           'ZERDA ESPINOZA EDINSON STALIN – 0968655852\n' +
           'BONILLA YAGUAL IVIS PATRICIO – 0967849925\n' +
           'CHACA LUNA VICTOR MANUEL – 0993298948\n' +
@@ -252,12 +213,10 @@
           'VALDEZ LOARTE BRAULIO ROBINSON – 0988887001\n' +
           'HERNANDEZ SARAGURO DANIEL MARTIN – 0989688625\n' +
           'ARIEL DAVID MURILLO GAVILANEZ – 0988847418 / 0969366212\n' +
-          'JULIO MOSCOSO SANTACRUZ – 0983422976 / 0998826581'
-      },
+          'JULIO MOSCOSO SANTACRUZ – 0983422976 / 0998826581' },
 
       // ================= MANTA / PORTOVIEJO =================
-      { name: 'Postventa Manta / Portoviejo',
-        body:
+      { name: 'Postventa Manta / Portoviejo', body:
           'CEDEÑO LOPEZ GARY GABRIEL – 0994952870\n' +
           'GARCIA GARCIA KEVIN – 0959741227\n' +
           'LOOR FRANCO CARLOS ALBERTO – 0968810311\n' +
@@ -265,22 +224,18 @@
           'MEZA LOOR NELSON JAVIER – 0963111618\n' +
           'SABANDO GARCIA KLEVER ALEJANDRO – 0968902305\n' +
           'SABANDO PACHECO RUBEN PAUL – 0998499896\n' +
-          'VERA ALAVA LUIS ANTONIO – 0994673760'
-      },
+          'VERA ALAVA LUIS ANTONIO – 0994673760' },
 
       // ================= QUEVEDO =================
-      { name: 'Postventa Quevedo',
-        body:
+      { name: 'Postventa Quevedo', body:
           'JIMENEZ ANDRADE JUAN CARLOS – 0991710216\n' +
           'SANCHEZ MACIAS PETER JOSE – 0969524984\n' +
           'JULIO CESAR RENDON PALMA – 0967112064\n' +
           'HERRERA CASTRO JOSE LEONARDO – 0963111619\n' +
-          'QUIJIJE MONTOYA ERWIN VLADIMIR – 0968851312'
-      },
+          'QUIJIJE MONTOYA ERWIN VLADIMIR – 0968851312' },
 
       // ================= QUITO =================
-      { name: 'Postventa Quito',
-        body:
+      { name: 'Postventa Quito', body:
           'ESMERALDAS GOMEZ NELSON JOEL – 0980040587\n' +
           'GUAMANGALLO TERAN JUAN CARLOS – 0959604935\n' +
           'OBANDO FUERTES FREDY ULPIANO – 0988861421\n' +
@@ -292,31 +247,25 @@
           'HIDALGO MIRANDA JUAN CARLOS – 0990975781\n' +
           'YUQUILEMA PILLIZA DIEGO STALIN – 0939900744\n' +
           'LAZO JOSE – 0990659802\n' +
-          'CEVALLOS OSWALDO – 0997096609'
-      },
+          'CEVALLOS OSWALDO – 0997096609' },
 
       // ================= SANTO DOMINGO =================
-      { name: 'Postventa Santo Domingo',
-        body:
+      { name: 'Postventa Santo Domingo', body:
           'IGLESIAS PAREDES JHON JAIRO – 0992187154\n' +
           'PALADINES ZAMBRANO EDGAR DAVID – 0967186073\n' +
           'PALOMEQUE CADENA JOSE MAURICIO – 0958789023\n' +
           'PERALTA ORTIZ JULIO CESAR – 0981272144\n' +
           'RefrigeraciónJM Jonny Dario Moreira Cedeño – 0994434002\n' +
-          'CONFORME PATIÑO ESTEBAN SALOMON – (sin número)'
-      },
+          'CONFORME PATIÑO ESTEBAN SALOMON – (sin número)' },
 
       // ================= ZONAS — BASTIÓN POPULAR =================
-      { name: 'Bastión Popular',
-        body:
+      { name: 'Bastión Popular', body:
           'BASTIÓN POPULAR BLOQUE 10 Y 11 — NO SE ATIENDEN\n' +
           'BASTIÓN POPULAR BLOQUE 10A (CUEVA DEL LOBO)\n' +
-          'ENTRADA DE LA 21 — TODO (incluye cooperativas)'
-      },
+          'ENTRADA DE LA 21 — TODO (incluye cooperativas)' },
 
       // ================= ZONAS — FLOR DE BASTIÓN =================
-      { name: 'Flor de Bastión',
-        body:
+      { name: 'Flor de Bastión', body:
           'COOP CASA DEL TIGRE — Sector Los Mangos\n' +
           'COOP FLOR DE BASTIÓN BLOQUE 2 — Se excluyen MZ en laderas hacia abajo\n' +
           'COOP FLOR DE BASTIÓN BLOQUE 3 — Sector Los Mangos\n' +
@@ -331,12 +280,10 @@
           'COOP NUEVA GUAYAQUIL — Sector Los Manguitos\n' +
           'COOP VALLE DE LA FLOR — MZ a partir de la cancha hacia arriba (ambos lados)\n' +
           'LAS DELICIAS y cooperativas a su alrededor\n' +
-          'URB. ECOCITY / URB. ECOBOSQUE'
-      },
+          'URB. ECOCITY / URB. ECOBOSQUE' },
 
       // ================= ZONAS — LA LADRILLERA =================
-      { name: 'La Ladrillera',
-        body:
+      { name: 'La Ladrillera', body:
           'COOP PROMESA DE DIOS — TODO\n' +
           'COOP CIUDAD DE DIOS — TODO\n' +
           'COOP DIVINO NIÑO 1 — TODO (y MZ que colinda con Socio Vivienda 2)\n' +
@@ -344,26 +291,20 @@
           'LA CARBONERA — TODO\n' +
           'LA CAROLINA y cooperativas a sus alrededores — TODO\n' +
           'LAS IGUANAS TIERRA PROMETIDA — TODO\n' +
-          'NUEVA GENERACIÓN LADRILLERA — TODO'
-      },
+          'NUEVA GENERACIÓN LADRILLERA — TODO' },
 
       // ================= ZONAS — LOMAS DE LA FLORIDA =================
-      { name: 'Lomas de la Florida',
-        body:
+      { name: 'Lomas de la Florida', body:
           'COOP ENNER PARRALES — MZ en escalinatas (arriba y abajo)\n' +
-          'COOP LOMAS DE LA FLORIDA — MZ en escalinatas (arriba y abajo)'
-      },
+          'COOP LOMAS DE LA FLORIDA — MZ en escalinatas (arriba y abajo)' },
 
       // ================= ZONAS — MARTHA DE ROLDÓS =================
-      { name: 'Martha de Roldós',
-        body:
+      { name: 'Martha de Roldós', body:
           'COOP COLINAS DE LA MARTHA — MZ en escalinatas (arriba y abajo)\n' +
-          'COOP LAS ROCAS — Casas asentadas en escalinatas'
-      },
+          'COOP LAS ROCAS — Casas asentadas en escalinatas' },
 
       // ================= ZONAS — MONTE SINAÍ =================
-      { name: 'Monte Sinaí',
-        body:
+      { name: 'Monte Sinaí', body:
           'COOP THALIA TORAL — Se excluyen casas pasadas la calle asfaltada\n' +
           'COOP CANELAR HOLGUITA\n' +
           'COOP LAS MARIAS — Se excluyen casas pasando la calle asfaltada\n' +
@@ -390,12 +331,10 @@
           'UNIDOS POR LA PAZ — TODO\n' +
           'COOP MAYAICU\n' +
           'COOP EL SOL\n' +
-          'COOP 31 DE OCTUBRE'
-      },
+          'COOP 31 DE OCTUBRE' },
 
       // ================= ZONAS — NUEVA PROSPERINA =================
-      { name: 'Nueva Prosperina',
-        body:
+      { name: 'Nueva Prosperina', body:
           'COOP REINALDO QUIÑONES 2 — TODO\n' +
           'COOP REINALDO QUIÑONES 3 — TODO\n' +
           'COOP DIVINO NIÑO — (de la Nueva Prosperina)\n' +
@@ -405,89 +344,83 @@
           'COOP HORIZONTES DEL GUERRERO — MZ 2101 a 2104\n' +
           'COOP NUEVA PROSPERINA — Se excluyen casas cercanas a laderas\n' +
           'COOP SAN IGNACIO DE LOYOLA — Todas las MZ que colindan con el cerro de la Nueva Prosperina\n' +
-          'CDLA SOCIO VIVIENDA 2 — TODO'
-      },
+          'CDLA SOCIO VIVIENDA 2 — TODO' },
 
       // ================= ZONAS — PARAÍSO LA FLOR =================
-      { name: 'Paraíso La Flor',
-        body:
+      { name: 'Paraíso La Flor', body:
           'COOP PARAÍSO DE LA FLOR — TODOS\n' +
-          'COOP BELLA VISIÓN'
-      },
+          'COOP BELLA VISIÓN' },
 
       // ================= ZONAS — SAN EDUARDO =================
-      { name: 'San Eduardo',
-        body: 'COOP 25 DE JULIO (Cerro San Eduardo) — Calles no asfaltadas y escalinatas'
-      },
+      { name: 'San Eduardo', body: 'COOP 25 DE JULIO (Cerro San Eduardo) — Calles no asfaltadas y escalinatas' },
 
       // ================= ZONAS — SAN FRANCISCO =================
-      { name: 'San Francisco',
-        body:
+      { name: 'San Francisco', body:
           'COOP CHORRILLO — TODO\n' +
-          'COOP SAN FRANCISCO — Todos los sectores'
-      },
+          'COOP SAN FRANCISCO — Todos los sectores' },
 
       // ================= ZONAS — VALERIO ESTACIO =================
-      { name: 'Valerio Estacio',
-        body:
+      { name: 'Valerio Estacio', body:
           'COOP VALERIO ESTACIO 4 — MZ asentadas en el cerro\n' +
           'COOP VALERIO ESTACIO 5 — Se excluye el cerro y MZ después de la estación de la línea 8\n' +
           'JANET TORAL 3\n' +
           'JANET TORAL 2 — MZ de la parte alta\n' +
-          'JANET TORAL 1 — MZ de la parte alta'
-      },
+          'JANET TORAL 1 — MZ de la parte alta' },
 
       // ================= ZONAS — SOCIO VIVIENDA =================
-      { name: 'Socio Vivienda',
-        body:
+      { name: 'Socio Vivienda', body:
           'NINGUNA ETAPA SE VISITA\n' +
-          'NUEVO CEIBOS'
-      },
+          'NUEVO CEIBOS' },
 
       // ================= ZONAS — EL FORTÍN =================
-      { name: 'El Fortín',
-        body: 'TODAS LAS COOPERATIVAS'
-      },
+      { name: 'El Fortín', body: 'TODAS LAS COOPERATIVAS' },
 
       // ================= ZONAS — PUENTE LUCÍA =================
-      { name: 'Puente Lucía',
-        body: 'Sector La Toma y sus cooperativas'
-      },
+      { name: 'Puente Lucía', body: 'Sector La Toma y sus cooperativas' },
 
       // ================= ZONAS — MAPASINGUE =================
-      { name: 'Mapasingue',
-        body:
+      { name: 'Mapasingue', body:
           'COOP EL CERRO\n' +
-          'COOP 26 DE FEBRERO'
-      },
+          'COOP 26 DE FEBRERO' },
 
       // ================= ZONAS — CASUARINA =================
-      { name: 'Casuarína',
-        body: 'Todo el sector'
-      },
+      { name: 'Casuarína', body: 'Todo el sector' },
 
       // ================= DURÁN =================
-      { name: 'Durán',
-        body: 'Finca La Delia'
-      },
+      { name: 'Durán', body: 'Finca La Delia' },
 
       // ================= GUAYAQUIL — ZONAS FORÁNEAS =================
-      { name: 'Zonas Foráneas (Guayaquil)',
-        body:
+      { name: 'Zonas Foráneas (Guayaquil)', body:
           'La Unión — Babahoyo\n' +
           'Caracol — Babahoyo\n' +
           'Guare — Baba\n' +
           'Baba — Zona rural\n' +
           'San Juan — Babahoyo\n' +
-          'Mata de Cacao — Babahoyo'
+          'Mata de Cacao — Babahoyo' },
+
+      /* === Carrusel como tarjeta, colocado justo después del bloque anterior === */
+      { name: 'Boletín septiembre (galería)',
+        body: `
+<x-carousel-card aspect="16/9" autoplay interval="4000" style="margin-top:10px;">
+  <span slot="title">Boletín septiembre</span>
+
+  <img src="inst0.jpg" alt="Boletín 0">
+  <img src="inst1.jpg" alt="Boletín 1">
+  <img src="inst2.jpg" alt="Boletín 2">
+  <img src="inst3.jpg" alt="Boletín 3">
+  <img src="inst4.jpg" alt="Boletín 4">
+  <img src="inst5.jpg" alt="Boletín 5">
+  <img src="inst6.jpg" alt="Boletín 6">
+  <img src="inst7.jpg" alt="Boletín 7">
+  <img src="inst8.jpg" alt="Boletín 8">
+
+  <span slot="caption">Desliza para ver todos los boletines.</span>
+</x-carousel-card>
+        `
       },
 
     ]; // ======= FIN DATA =======
 
-
-
-
-    
     // DOM
     const grid = $('#grid');
     const empty = $('#empty');
@@ -603,7 +536,6 @@
         this._btnPrev.addEventListener("click", () => this.prev());
         this._btnNext.addEventListener("click", () => this.next());
 
-        // Gestos básicos (opcional: puedes extender con pointermove)
         this._initSlides();
       }
 
@@ -620,11 +552,9 @@
 
       disconnectedCallback(){ this._pause(); }
 
-      // Public
       next(){ this._idx = (this._idx + 1) % this._slides.length; this._update(); }
       prev(){ this._idx = (this._idx - 1 + this._slides.length) % this._slides.length; this._update(); }
 
-      // Internals
       _initSlides(){
         const imgs = Array.from(this.querySelectorAll("img"));
         this._track.innerHTML = "";
