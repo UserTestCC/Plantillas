@@ -477,11 +477,16 @@
       },
 
       /* ======= AQUÍ VA EL CARRUSEL COMO TARJETA ======= */
-      {
-        name: 'Boletín septiembre (galería)',
-        body: `
+{
+  name: 'Boletín septiembre (galería)',
+  body: `
 <x-carousel-card aspect="16/9" autoplay interval="4000">
-  <span slot="title">Boletín septiembre</span>
+  <span slot="title">
+    <a href="boletin_completo.pdf" download 
+       style="color:#60a5fa; text-decoration:none; font-weight:700;">
+      📄 Descargar Boletín
+    </a>
+  </span>
 
   <img src="inst0.jpg" alt="Boletín 0">
   <img src="inst1.jpg" alt="Boletín 1">
@@ -495,7 +500,8 @@
 
   <span slot="caption">Desliza para ver todos los boletines.</span>
 </x-carousel-card>`
-      },
+},
+
 
     ]; // ======= FIN DATA =======
 
