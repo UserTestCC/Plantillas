@@ -295,7 +295,11 @@
         const pre = node.querySelector('.b');
         const btn = node.querySelector('.copy');
         h3.innerHTML = highlight(item.name, term);
-        pre.innerHTML = highlight(item.body, term);
+       //CAMBIOS 19SEPT
+        const hasHTML = /<[^>]+>/.test(item.body);
+    pre.innerHTML = hasHTML ? item.body : highlight(item.body, term);
+
+        
         btn.addEventListener('click', async () => {
           let text = item.body;
           const a = agent.value?.trim();
