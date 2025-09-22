@@ -820,7 +820,7 @@ Katherine Mera — Planificación — <span class="muted">kpmera@indurama.com</s
           pre.innerHTML = highlight(item.body, term);
           btn.addEventListener('click', async () => {
             let text = item.body;
-            const a = agent.value?.trim();
+            const a = agent?.value?.trim?.();                 
             if(a) text = text.replace(/\{\{\s*\}\}/g, a).replace(/\{\{\s*\}\}/g, a);
             try{
               await navigator.clipboard.writeText(text);
