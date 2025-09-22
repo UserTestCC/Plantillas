@@ -195,9 +195,776 @@
       { name: 'Mantenimientos Lavadoras – Aires Acondicionados – Refrigeradoras',
         body: 'Los mantenimientos pueden tener un costo desde los $25,00 (básico) hasta $69,00 dólares (moderado), esto dependerá del estado de su producto.\nPor favor considere que estos valores no incluyen costos por repuestos.\n\nIMPORTANTE: A estos valores debemos sumarle el costo por movilización si pertenece a Ruta Foránea ($8,67).\n\nAPLICA A: Lavadoras – Aires Acondicionados – Refrigeradoras.' },
 
-      // ADECUACIONES 
+    
+
+
+
+
+
+  // ADECUACIONES 
+
+
+
+
       { name: 'Adecuaciones – Encimeras y cocinas de inducción',
         body: 'INSTALACIÓN: Gratis.\nREQUERIMIENTOS:\n- Eléctrico: 220V, breaker 40A, conexión directa desde medidor.\n- Cable calibre 8 AWG.\n- Ventilación: 2 cm laterales, 15 cm posterior.\n- Ollas ferromagnéticas, base plana, tamaño similar al foco de inducción.\nRestricciones: No incluye albañilería ni inspecciones técnicas.' },
+
+
+
+{
+  name: 'Modelos EGI – Instalación y requisitos',
+  body: `
+<b>Modelos:</b><br>
+EGI-604VDNE, EGI-755VDNE, EGI-905VDNE<br>
+EGI-604AI, EGI-755AI, EGI-905AI<br><br>
+
+<b>INSTALACIÓN DE GAS:</b><br>
+- Manguera flexible para gas combustible de 8 mm de diámetro interno<br>
+- Manguera que cumpla con requisitos: flexibilidad, duración y resistencia térmica mínima de 70°C<br>
+- Regulador de presión doméstica (cabezote) (Si tiene gas centralizado no necesita regulador)<br>
+- Dos bridas metálicas para conexión de manguera<br><br>
+
+<b>INSTALACIÓN ELÉCTRICA:</b><br>
+- La conexión eléctrica debe ser de 110V/60Hz y debe poseer conexión a tierra (realizado por un técnico calificado)<br>
+- Tomacorriente tipo “B” (tres patas normal) a máximo 1,20m del artefacto<br><br>
+
+<b>COLOCACIÓN:</b><br>
+- Mueble en donde se instale el producto debe tener estructura firme, estable, soportar peso de 22 Kg más el peso de carga y temperaturas de hasta 120°C.<br>
+`
+}, 
+
+
+// =================== COCCIÓN ===================
+
+// Cocinas SMART (gas)
+{
+  name: 'Cocción · Cocinas SMART (gas) – Zafiro / Montecarlo / Niza',
+  body: `
+<b>Garantía comp. específicos:</b> N/A<br>
+<b>Instalación gratuita:</b> Sí (una sola vez)<br><br>
+
+<b>Instalación de gas</b>
+<ul>
+  <li>Manguera flexible para gas de Ø interno 8 mm</li>
+  <li>Manguera con flexibilidad, durabilidad y resistencia térmica ≥ 70&nbsp;°C</li>
+  <li>Regulador de presión doméstica (si es gas centralizado, no requiere)</li>
+  <li>Dos bridas metálicas para la manguera</li>
+</ul>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>Tomacorriente tipo B (3 patas)</li>
+  <li>Distancia mínima de 1 m entre tomacorriente y producto</li>
+  <li>Conectar cable principal al tomacorriente</li>
+</ul>
+
+<b>Ventilación</b>
+<ul>
+  <li>Laterales 2&nbsp;cm, posterior 15&nbsp;cm</li>
+  <li>Entre mesón y extractor: 65–80&nbsp;cm</li>
+</ul>
+
+<b>Restricciones / notas</b>
+<ul>
+  <li>Precio instalación = Atención básica + Movilización (solo si el cliente solicita)</li>
+</ul>
+`
+},
+
+// Encimeras (fabricación nacional, gas)
+{
+  name: 'Cocción · Encimeras gas (nacionales) – Requisitos',
+  body: `
+<b>Instalación gratuita:</b> Sí (una sola vez)<br><br>
+
+<b>Instalación de gas</b>
+<ul>
+  <li>Manguera flexible Ø interno 8 mm</li>
+  <li>Resistencia térmica ≥ 70&nbsp;°C</li>
+  <li>Regulador de presión (no aplica en gas centralizado)</li>
+  <li>Dos bridas metálicas</li>
+</ul>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>Tomacorriente tipo B (3 patas)</li>
+  <li>Distancia mínima de 1 m al producto</li>
+</ul>
+
+<b>Ventilación</b>
+<ul>
+  <li>Entre base del producto y zona de empotramiento: 15&nbsp;cm</li>
+  <li>Entre mesón y extractor: 65–80&nbsp;cm</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Albañilería / mampostería</li>
+  <li>Instalaciones eléctricas</li>
+</ul>
+`
+},
+
+// Encimera vidrio/inox gas (modelos específicos)
+{
+  name: 'Cocción · Encimera vidrio/inox gas – Modelos EGI-604/755/905 (VDNE/AI)',
+  body: `
+<b>Modelos:</b> EGI-604VDNE, EGI-755VDNE, EGI-905VDNE, EGI-604AI, EGI-755AI, EGI-905AI<br>
+<b>Instalación gratuita:</b> Sí (una sola vez)<br><br>
+
+<b>Instalación de gas</b>
+<ul>
+  <li>Manguera flexible Ø interno 8 mm</li>
+  <li>Resistencia térmica ≥ 70&nbsp;°C</li>
+  <li>Regulador de presión (no aplica en gas centralizado)</li>
+  <li>Dos bridas metálicas</li>
+</ul>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>110&nbsp;V / 60&nbsp;Hz con puesta a tierra (técnico calificado)</li>
+  <li>Tomacorriente tipo B a máx. 1,20&nbsp;m</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Mueble firme/estable; soporta 22&nbsp;kg + carga; hasta 120&nbsp;°C</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Albañilería / mampostería</li>
+  <li>Instalaciones eléctricas</li>
+</ul>
+`
+},
+
+// Horno a gas (general)
+{
+  name: 'Cocción · Horno a gas – General (excepto HEI-75GN)',
+  body: `
+<b>Instalación gratuita:</b> No</b><br>
+<b>Precio referencia:</b> USD&nbsp;17 + IVA (si el cliente solicita)<br><br>
+
+<b>Instalación de gas</b>
+<ul>
+  <li>Manguera flexible Ø interno 8 mm, ≥ 70&nbsp;°C</li>
+  <li>Regulador de presión (no aplica gas centralizado)</li>
+  <li>Dos bridas metálicas</li>
+</ul>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>Tomacorriente tipo B (3 patas)</li>
+  <li>Distancia mínima 1&nbsp;m al producto</li>
+</ul>
+
+<b>Ventilación</b>
+<ul>
+  <li>Laterales 2&nbsp;cm; posterior 15&nbsp;cm</li>
+</ul>
+`
+},
+
+// Horno a gas HEI-75GN
+{
+  name: 'Cocción · Horno a gas – Modelo HEI-75GN',
+  body: `
+<b>Instalación gratuita:</b> Sí (una sola vez)<br><br>
+
+<b>Instalación de gas</b>
+<ul>
+  <li>Manguera flexible Ø 8 mm, ≥ 70&nbsp;°C</li>
+  <li>Regulador (no aplica gas centralizado)</li>
+  <li>Dos bridas</li>
+</ul>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>110&nbsp;V / 60&nbsp;Hz con tierra (técnico calificado)</li>
+  <li>Tomacorriente tipo B a máx. 1,20&nbsp;m</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Mueble firme; soporta 35&nbsp;kg + carga; hasta 120&nbsp;°C</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Albañilería / mampostería</li>
+  <li>Instalaciones eléctricas</li>
+</ul>
+`
+},
+
+// Horno eléctrico HEI-75EN / END / ENDF
+{
+  name: 'Cocción · Horno eléctrico – HEI-75EN / HEI-75END / HEI-75ENDF',
+  body: `
+<b>Instalación gratuita:</b> Sí (una sola vez)<br>
+<b>Recomendación:</b> Inspección previa con costo si se requiere (evita reprocesos).<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>220&nbsp;V (50–60&nbsp;Hz) con tierra</li>
+  <li>Línea dedicada desde medidor con breaker 25&nbsp;A</li>
+  <li>Tomacorriente NEMA 6-15 (tipo G) a máx. 1,20&nbsp;m</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Mueble firme; soporta 35&nbsp;kg + carga; hasta 120&nbsp;°C</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Albañilería / mampostería</li>
+  <li>Instalaciones eléctricas</li>
+</ul>
+`
+},
+
+// Inducción – Cocinas/encimeras (general)
+{
+  name: 'Cocción · Inducción – Cocinas/Encimeras (general)',
+  body: `
+<b>Garantía:</b> Vitrocerámica 10 años · Electrónica 3 años<br>
+<b>Excepción:</b> EI4PVE53: garantía total 1 año (vitrocerámica 10 años).<br>
+<b>Instalación gratuita:</b> Sí (una sola vez)<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>Medidor 220&nbsp;V (empresa eléctrica)</li>
+  <li>Tierra obligatoria (técnico calificado)</li>
+  <li>Conexión directa y exclusiva desde medidor</li>
+  <li>Cableado 3×8&nbsp;AWG · Breaker dedicado 40&nbsp;A</li>
+  <li>Voltaje de operación 198–227&nbsp;V</li>
+  <li>Tomacorriente NEMA 10-50R · Máx. 1,20&nbsp;m</li>
+</ul>
+
+<b>Ventilación</b>
+<ul>
+  <li>Laterales 2&nbsp;cm · Posterior 15&nbsp;cm</li>
+</ul>
+
+<b>Utensilios</b>
+<ul>
+  <li>Ollas base plana ferromagnética; tamaño ≤ ±2&nbsp;cm del inductor</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección/asesoría técnica</li>
+  <li>Albañilería / mampostería</li>
+  <li>Instalaciones eléctricas</li>
+</ul>
+`
+},
+
+// Inducción – Encimeras importadas (EI-5PVI 90 cm / EI-4PVI80D)
+{
+  name: 'Cocción · Inducción – Encimeras importadas EI-5PVI 90 cm / EI-4PVI80D',
+  body: `
+<b>Garantía:</b> Vitrocerámica 10 años · Electrónica 3 años<br>
+<b>Instalación gratuita:</b> Sí (una sola vez)<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>220&nbsp;V con tierra · 3×8&nbsp;AWG · Breaker 40&nbsp;A</li>
+  <li>Conexión directa desde medidor · 198–227&nbsp;V</li>
+  <li>Tomacorriente NEMA 10-50R · Máx. 1,20&nbsp;m</li>
+</ul>
+
+<b>Ventilación</b>
+<ul>
+  <li>Laterales 2&nbsp;cm · Posterior 15&nbsp;cm</li>
+</ul>
+
+<b>Utensilios</b>
+<ul>
+  <li>Ollas ferromagnéticas, base plana, tamaño acorde al inductor (±2&nbsp;cm)</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección/asesoría técnica</li>
+  <li>Albañilería / mampostería</li>
+  <li>Instalaciones eléctricas</li>
+</ul>
+`
+},
+
+// Horno eléctrico – Todos (otra ficha general)
+{
+  name: 'Cocción · Horno eléctrico – Todos (ficha general)',
+  body: `
+<b>Instalación gratuita:</b> Sí (una sola vez)<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>220&nbsp;V con tierra · 198–227&nbsp;V de operación</li>
+  <li>Conexión directa desde medidor · Breaker 25&nbsp;A</li>
+  <li>Tomacorriente tipo G (3 patas) · máx. 1,20&nbsp;m</li>
+</ul>
+
+<b>Empotramiento</b>
+<ul>
+  <li>Mueble firme · soporta 58,5&nbsp;kg · hasta 120&nbsp;°C</li>
+  <li>Respetar medidas del manual de usuario</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección/asesoría técnica (opcional con costo)</li>
+  <li>Albañilería / mampostería · Instalaciones eléctricas</li>
+</ul>
+`
+},
+
+// =================== AIRES ACONDICIONADOS ===================
+
+{
+  name: 'A/A Split – ASI-122(A/I) / ASI-242I (condiciones generales)',
+  body: `
+<b>Garantía:</b> Compresor On/Off 3 años · Inverter 10 años<br>
+<b>Soporte:</b> Sin soporte USD&nbsp;45 (inc. IVA) · Soporte USD&nbsp;9 (inc. IVA)<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>220&nbsp;V con tierra · conexión directa y exclusiva</li>
+  <li>Breaker dedicado 20&nbsp;A</li>
+  <li>Punto de conexión a máx. 1&nbsp;m del equipo</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Pared enlucida y firme; soporta ~35&nbsp;kg</li>
+  <li>Unidad externa con 1&nbsp;m² libre</li>
+  <li>Altura instalación hasta 3&nbsp;m; mayor altura requiere andamios (a cargo del cliente)</li>
+  <li>Buena circulación de aire · sin fuentes de calor/vapor · drenaje para unidad interna</li>
+</ul>
+
+<b>Alcance / no incluye</b>
+<ul>
+  <li>Máx. 10&nbsp;m de tubería cobre (int-ext)</li>
+  <li>No incluye inspección técnica, metros extra, albañilería, instalaciones eléctricas, andamios</li>
+  <li>Punto de soldadura para metros adicionales: USD&nbsp;25 (materiales + mano de obra)</li>
+</ul>
+`
+},
+
+{
+  name: 'A/A Split – ASI-122A/123I/243I/243A (condiciones similares)',
+  body: `
+<b>Garantía:</b> Compresor On/Off 3 años · Inverter 10 años<br>
+<b>Soporte:</b> Sin soporte USD&nbsp;45 · Soporte USD&nbsp;9 (ambos inc. IVA)<br>
+<b>Instalación/Alcance:</b> Igual a ficha “A/A Split – condiciones generales”.<br>
+<b>No incluye:</b> Igual a ficha general (tubería máx. 10&nbsp;m; extras con costo).
+`
+},
+
+{
+  name: 'A/A Split – ASI-124A/244A (On/Off) · ASI-124I/244I (Inverter) – Promoción',
+  body: `
+<b>Garantía:</b> On/Off 6 años · Inverter 10 años<br>
+<b>Promos (1-Mar-2025 a 30-Abr-2025):</b>
+<ul>
+  <li><b>Cadenas y especializados:</b> Instalación básica gratis (sin soporte, sin movilización foránea). No aplica Galápagos.</li>
+  <li>Soporte: USD&nbsp;9 (inc. IVA)</li>
+  <li><b>Mayoreo:</b> Instalación sin soporte USD&nbsp;35 (paga cliente) + USD&nbsp;10 (área comercial)</li>
+  <li>Soporte gratis para: Tienda Indurama y E-commerce</li>
+  <li>Soporte gratis en cadenas para modelos: ASI-124I / ASI-244A / ASI-185A</li>
+</ul>
+<b>Instalación eléctrica/colocación/no incluye:</b> Ver ficha general de A/A Split.
+<br><b>Movilización foránea:</b> USD&nbsp;7,15 + IVA
+`
+},
+
+{
+  name: 'A/A Split – ASI-125A/185A/365A (On/Off 5 años) – Promoción',
+  body: `
+<b>Garantía:</b> Compresor On/Off 5 años<br>
+<b>Promos (1-Mar-2025 a 30-Abr-2025):</b> iguales a ficha anterior (cadenas/mayoreo/soporte).<br>
+<b>Instalación eléctrica/colocación/no incluye:</b> Ver ficha general.
+<br><b>Movilización foránea:</b> USD&nbsp;7,15 + IVA
+`
+},
+
+// =================== CAMPANAS ===================
+
+{
+  name: 'Campanas – CEI-90VDNRC / CEI-90NEVC / CEI-90CRVC / CEI-90CRVI (pared/isladas)',
+  body: `
+<b>Precio instalación:</b> USD&nbsp;20 (inc. IVA) · Vigente desde 09-Dic-2023<br>
+<b>Instalación gratuita:</b> Sukasa, Megamaxi, Todohogar, Kiwi<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>115&nbsp;V con tierra · tipo B (3 patas)</li>
+  <li>Tomacorriente a máx. 1&nbsp;m (según modelo, preferible parte superior)</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Pared firme/enlucida; soporta ~35&nbsp;kg</li>
+  <li>Altura sobre encimera/cocina: 65–80&nbsp;cm</li>
+  <li>Salida al exterior: ducto 6"</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección técnica, albañilería, instalaciones eléctricas</li>
+  <li>Ducto de aluminio tipo acordeón</li>
+</ul>
+`
+},
+
+{
+  name: 'Campanas – CEI-60/75/90CRP / CEI-60/75/90NE (telescópicas)',
+  body: `
+<b>Precio instalación:</b> USD&nbsp;10 (inc. IVA) · Vigente desde 09-Dic-2023<br>
+<b>Instalación gratuita:</b> Sukasa, Megamaxi, Todohogar, Kiwi (y Home Vega).<br>
+<b>Marcimex:</b> instalación gratuita del 18-Feb-2025 al 31-May-2025.<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>115&nbsp;V con tierra · tipo B</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Altura sobre encimera: 65–80&nbsp;cm · Ducto 5"</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección técnica, albañilería, instalaciones eléctricas</li>
+  <li>Ducto 1,5&nbsp;m y acople 5" · Ducto acordeón</li>
+</ul>
+`
+},
+
+{
+  name: 'Campana empotrable – CEI-90NMO',
+  body: `
+<b>Precio instalación:</b> USD&nbsp;30 (inc. IVA) · Vigente desde 09-Dic-2023<br>
+<b>Instalación gratuita:</b> Sukasa, Megamaxi, Todohogar, Kiwi<br><br>
+
+<b>Nota:</b> Puede requerir inspección técnica previa con costo.<br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>115&nbsp;V con tierra · tipo B</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Mueble según manual; área de motor y fuente accesible</li>
+  <li>El motor puede cambiarse de lado para instalación</li>
+  <li>Mueble soporta 41&nbsp;kg · anclaje a estructura firme</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección técnica, albañilería, instalaciones eléctricas</li>
+  <li>Ducto de aluminio tipo acordeón</li>
+</ul>
+`
+},
+
+// =================== COMPLEMENTARIOS / HORNOS ===================
+
+{
+  name: 'Complementarios · Horno eléctrico HEI-60ENPD',
+  body: `
+<b>Instalación gratuita:</b> Sí (una sola vez)<br>
+<b>Recomendación:</b> Inspección previa opcional con costo.<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>220&nbsp;V con tierra · línea dedicada con breaker 25&nbsp;A</li>
+  <li>Tomacorriente tipo B a máx. 1,20&nbsp;m</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Mueble firme; soporta 58,5&nbsp;kg + carga; hasta 120&nbsp;°C</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección, albañilería, instalaciones eléctricas</li>
+</ul>
+`
+},
+
+// =================== LAVADORAS ===================
+
+{
+  name: 'Lavadoras · Manual 11/13/15 kg – LRI-11BLSAP / LRI-13BLSA / LRI-15BLSA',
+  body: `
+<b>Instalación gratuita:</b> No</b><br>
+<b>Instalación referencial:</b> Atención básica + Movilización (si el cliente solicita)<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>115&nbsp;V con tierra · tipo B · a máx. 1&nbsp;m</li>
+</ul>
+
+<b>Conexiones / colocación</b>
+<ul>
+  <li>Toma de agua fría 1/2" y grifo 1/2" (salida 3/4")</li>
+  <li>Drenaje 2&nbsp;1/2" · altura 90–120&nbsp;cm</li>
+  <li>Piso firme y nivelado, sin intemperie/sol directo</li>
+</ul>
+`
+},
+
+{
+  name: 'Lavadora automática 16 kg – LRI-16CRA / LRI-16DGR',
+  body: `
+<b>Garantías:</b> Tarjeta electrónica 3 años · Motor 3 años<br>
+<b>Instalación:</b> USD&nbsp;25 inc. IVA (movilización foránea con costo extra)<br><br>
+
+<b>Eléctrico / conexiones / colocación:</b> Igual a ficha general de automáticas (ver abajo).
+`
+},
+
+{
+  name: 'Lavadoras automáticas – 17/19/19 Inverter/21/22 kg (ficha general)',
+  body: `
+<b>Modelos:</b> LRI-19DGR, LRI-19BLA, LRI-17DGR, LRI-22DGR, LRI-21FCR, LRI-19CRPF, LRI-21CRPF<br>
+<b>Garantías:</b>
+<ul>
+  <li>Motor: hasta 10 años según modelo (ver placa)</li>
+  <li>Panel de control/electrónica: 3 años (según modelo)</li>
+</ul>
+<b>Instalación:</b> USD&nbsp;25 inc. IVA (movilización foránea extra)<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>115&nbsp;V / 60&nbsp;Hz con tierra · tipo B · a máx. 1&nbsp;m</li>
+</ul>
+
+<b>Conexiones / colocación</b>
+<ul>
+  <li>Toma de agua fría (y opcional caliente) 1/2" · grifo 1/2" (salida 3/4")</li>
+  <li>Drenaje 2&nbsp;1/2" · altura 90–120&nbsp;cm</li>
+  <li>Piso firme, sin intemperie/sol directo</li>
+</ul>
+`
+},
+
+// =================== SECADORAS ===================
+
+{
+  name: 'Secadora a gas – SEC-20BLA / SEC-20DGR',
+  body: `
+<b>Precio instalación:</b> USD&nbsp;49 (inc. IVA) · Mano de obra + movilización urbana<br>
+<b>Incluye accesorios:</b> manguera, válvula, kit atrapa-pelusas<br>
+<b>Movilización foránea:</b> costo extra<br><br>
+
+<b>Requisito:</b> Conexión GLP previa en el domicilio.<br>
+
+<b>Instalación de gas</b>
+<ul>
+  <li>Manguera Ø 8 mm, ≥ 70&nbsp;°C · Regulador doméstico (no en gas centralizado)</li>
+  <li>Dos bridas</li>
+</ul>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>120&nbsp;V / 60&nbsp;Hz con tierra · tipo B</li>
+  <li>Distancia máx. 1&nbsp;m al tomacorriente</li>
+</ul>
+
+<b>Ventilación</b>
+<ul>
+  <li>Posterior 15&nbsp;cm · Laterales 2,5&nbsp;cm</li>
+  <li>Ambiente ventilado · Ducto de desfogue 4"</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección, albañilería, instalaciones eléctricas, gasfitería, tubo drenaje</li>
+</ul>
+`
+},
+
+{
+  name: 'Secadora a gas – SEC-21FCR (condiciones iguales)',
+  body: `
+Mismas condiciones que la ficha “Secadora a gas – SEC-20BLA / SEC-20DGR”.<br>
+<b>Movilización foránea:</b> USD&nbsp;7,15 + IVA
+`
+},
+
+// =================== LAVAVAJILLAS ===================
+
+{
+  name: 'Lavavajillas – LVI-14CR / LVI-14NE',
+  body: `
+<b>Instalación gratuita:</b> Sí<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>115&nbsp;V con tierra · tipo B · a máx. 1&nbsp;m</li>
+</ul>
+
+<b>Conexiones / colocación</b>
+<ul>
+  <li>Toma de agua fría 1/2" y grifo 1/2" (salida 3/4")</li>
+  <li>Drenaje 2&nbsp;1/2" · altura 50–100&nbsp;cm</li>
+  <li>Piso firme y nivelado, sin intemperie/sol</li>
+</ul>
+
+<b>No incluye</b>
+<ul>
+  <li>Inspección, albañilería, instalaciones eléctricas, gasfitería</li>
+</ul>
+`
+},
+
+// =================== REFRIGERACIÓN ===================
+
+{
+  name: 'Congeladores horizontales – CI-145BL / 199IBL / 299IBL / 399IBL / 700IBL',
+  body: `
+<b>Garantía:</b> Compresor 3 años · <b>Instalación gratuita:</b> No<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>115&nbsp;V con tierra · tipo B · máx. 1,5&nbsp;m</li>
+  <li>Evitar variaciones fuertes de voltaje · No usar extensiones</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Piso nivelado · sin intemperie/sol</li>
+  <li>Posterior 15&nbsp;cm · Laterales 2&nbsp;cm</li>
+</ul>
+
+<b>Nota:</b> Modelo CVI-520 genera escarcha en congelador.<br>
+<b>Instalación pagada:</b> Atención básica + Movilización (si el cliente pide).
+`
+},
+
+{
+  name: 'Refrigerador RG-8 Steel (ficha rápida)',
+  body: `
+<b>Garantía:</b> Compresor 3 años · <b>Instalación gratuita:</b> No<br>
+<b>Eléctrico:</b> 115&nbsp;V con tierra · tipo B.<br>
+<b>Instalación pagada:</b> Atención básica + Movilización (si el cliente pide).
+`
+},
+
+{
+  name: 'Refrigeradoras COMBI – RI-289 / RI-389',
+  body: `
+<b>Garantía:</b> Compresor 3 años · <b>Instalación gratuita:</b> No<br><br>
+<b>Eléctrico:</b> 115&nbsp;V con tierra · tipo B · máx. 1&nbsp;m<br>
+<b>Colocación:</b> Piso nivelado; evitar calor directo; posterior 15&nbsp;cm · laterales 2&nbsp;cm.<br>
+<b>Instalación pagada:</b> Atención básica + Movilización (si el cliente pide).
+`
+},
+
+{
+  name: 'Refrigeradora COMBI – RI-600',
+  body: `
+<b>Garantía:</b> Compresor 3 años · <b>Instalación gratuita:</b> No<br>
+<b>Eléctrico/Colocación:</b> Igual a ficha COMBI RI-289/389.
+`
+},
+
+{
+  name: 'SBS 2 puertas – RI-760 / RI-770I / RI-780 R / RI-780I / RI-780IND',
+  body: `
+<b>Garantías:</b> (ver modelo) Compresor hasta 10 años · Tarjeta inversora 3 años en modelos “I”<br>
+<b>Instalación gratuita:</b> No · <b>Servicio:</b> Atención moderada + Movilización (si el cliente pide)<br><br>
+
+<b>Eléctrico/Colocación (todos):</b>
+<ul>
+  <li>115&nbsp;V con tierra · tipo B · máx. 1&nbsp;m</li>
+  <li>Piso nivelado, sin calor directo; posterior 15&nbsp;cm · laterales 2&nbsp;cm</li>
+</ul>
+`
+},
+
+{
+  name: 'SBS 2 puertas con dispensador – RI-785I / RI-790I (CR / NE)',
+  body: `
+<b>Garantías:</b> Compresor 10 años · Tarjeta inversora 3 años<br>
+<b>Instalación gratuita:</b> Sí (conexión de agua)<br><br>
+
+<b>Requisitos de agua</b>
+<ul>
+  <li>Toma a máx. 1,5&nbsp;m del equipo</li>
+  <li>Tubo 1/2" · grifo 1/2" (salida 3/4")</li>
+  <li>Presión suficiente para dispensador</li>
+</ul>
+
+<b>Eléctrico/Colocación:</b> Igual a ficha SBS general.
+`
+},
+
+{
+  name: 'French Door – RI-990I / RI-992I (Croma / Negro)',
+  body: `
+<b>Garantías:</b> Compresor 10 años · Tarjeta inversora 3 años<br>
+<b>Instalación gratuita:</b> Sí (conexión de agua)<br>
+<b>Requisitos de agua / eléctrico / colocación:</b> igual a RI-785I/790I.
+`
+},
+
+{
+  name: 'Cross Door – RI-870I / RI-880I (sin agua) · RI-885I (con agua)',
+  body: `
+<b>Garantías:</b> Compresor 10 años · Tarjeta inversora 3 años<br>
+<b>Instalación gratuita:</b> RI-885I: Sí (conexión de agua) · RI-870I/880I: No<br>
+<b>Eléctrico/Colocación:</b> 115&nbsp;V con tierra · tipo B · máx. 1&nbsp;m · posterior 15&nbsp;cm · laterales 2&nbsp;cm.
+`
+},
+
+{
+  name: 'Congeladores H/V (todos) · Refrigeradoras Induglob · Inverter electrónicas',
+  body: `
+<ul>
+  <li><b>Congeladores H/V (todos):</b> Compresor 3 años · 115&nbsp;V con tierra · posterior 15&nbsp;cm / laterales 2&nbsp;cm · sin extensiones.</li>
+  <li><b>Refrigeradoras Induglob (ej. RI-370):</b> iguales condiciones; en RI-430/530 no pegar alimentos al plate posterior.</li>
+  <li><b>Refrigeradoras electrónicas inverter (RI-480/485/575/580/585):</b> Compresor 10 años · Tarjeta 3 años.</li>
+</ul>
+<b>Instalación gratuita:</b> No · Servicio pagado: Atención básica/moderada + Movilización (si el cliente solicita).
+`
+},
+
+
+{
+  name: 'Microondas empotrable – MWI-25NE',
+  body: `
+<b>Instalación gratuita:</b> Sí (una sola vez)<br><br>
+
+<b>Instalación eléctrica</b>
+<ul>
+  <li>220&nbsp;V / 60&nbsp;Hz con puesta a tierra (realizado por técnico calificado)</li>
+  <li>Conexión directa desde el medidor con breaker dedicado de 25&nbsp;A</li>
+  <li>Tomacorriente tipo B (3 patas) a máx. 1,20&nbsp;m del equipo</li>
+</ul>
+
+<b>Colocación</b>
+<ul>
+  <li>Mueble firme y estable que soporte 20,5&nbsp;kg + carga</li>
+  <li>Materiales que resistan hasta 120&nbsp;°C</li>
+</ul>
+`
+},
+
+
+
+
+
+
+
 
       //  AMBATO  
       { name: 'Técnicos Ambato',
@@ -769,6 +1536,12 @@ Katherine Mera — Planificación — <span class="muted">kpmera@indurama.com</s
 <span class="muted">Atención exclusiva por WhatsApp.</span>
 `
 },
+
+
+
+
+
+
 
 
       
