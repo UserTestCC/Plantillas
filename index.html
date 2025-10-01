@@ -67,6 +67,24 @@
     .viewer-actions{display:flex;justify-content:flex-end;margin-bottom:8px}
     .viewer-close{border:1px solid var(--line);background:#0b1222;color:#e5e7eb;border-radius:10px;padding:6px 10px;cursor:pointer}
     .viewer-body x-carousel-card{display:block;width:min(100%,1000px)}
+
+
+
+/* —— Formulario incidente —— */
+.formbox{display:grid;gap:10px;margin-top:6px}
+.formbox label{font-size:13px;color:#cbd5e1}
+.formbox input,.formbox textarea{
+  background:#0b1222;border:1px solid var(--line);color:var(--ink);
+  border-radius:10px;padding:10px;font:inherit;outline:none
+}
+.formbox input:focus,.formbox textarea:focus{box-shadow:0 0 0 3px var(--ring);border-color:#334155}
+.formbox textarea{min-height:120px;resize:vertical}
+.formbox .row{display:flex;gap:8px}
+.formbox .row > *{flex:1}
+.formbox .status{font-size:13px;color:#93c5fd}
+
+
+
   </style>
 </head>
 <body>
@@ -985,7 +1003,71 @@ Mismas condiciones que la ficha “Secadora a gas – SEC-20BLA / SEC-20DGR”.<
 },
 
 
-
+{
+  name: 'Clientes – Cadenas',
+  body:
+`IMPORTADORA TOMEBAMBA S.A.
+FIBROACERO S.A.
+CORPORACION EL ROSADO S.A
+CORPORACION LA FAVORITA C.A - TV VENTAS - MEGAMAXI - SUPER SALDOS - AKI
+ICESA S.A.
+COMERCIAL KYWI S.A
+PYCCA S.A.
+SERVICE.COM S.A.
+UNICOMER DE ECUADOR S.A.
+SERVICIOS DE TELECOMUNICACIONES
+COMOHOGAR S.A.
+ZUHAUSE CIA LTDA
+ALMESPAÑA CIA. LTDA.
+JUAN ROSENDO CASTRO TELLO
+CORPORACION JARRIN HERRERA CIA.
+SUPERMERCADO DE COMPUTADORAS
+ASANTECORP S.A.
+GRAN HOGAR S.A. GRAHOGSA
+JOSE FEDERICO ALVARADO VALDIVIEZO
+KITTON S.A.
+SMC CONSTRUCCIONES S.C.C.A
+COMERCIAL CON CREDITO CONCRESA SA
+COMPAÑIA DE SISTEMAS DE COMPUTACION
+TIENDAS INDUSTRIALES ASOCIADAS TIA
+COMERCIALIZADORA INTER TRADE
+COMPAÑIA GENERAL DE COMERCIO
+LISLOP S.A
+CRECOSCORP S.A.
+IMPORTADORA VEGA S.A.
+LA GANGA R.C.A. S.A
+PROJECTS & DESIGNS C.A. PRODESIGNS
+ALMACENES DE PRATI S.A.
+ALMACENES BOYACA S.A.
+ALESSA S.A.
+VENTURETRADING S.A.
+ROBERTO FRANCISCO IZURIETA SILVA
+CONSORCIO CENTRO FERRETERO
+COMERCIAL ETATEX C.A.
+TIENDEC S.A.
+HOMECENTERS ECUATORIANOS S.A.S. (PROMART)
+MARCIMEX S.A.`
+},
+{
+  name: 'Clientes – Especializados',
+  body:
+`PYCCA S.A.
+ALMACENES DE PRATI S.A.
+ALESSA S.A.
+TIENDAS INDUSTRIALES ASOCIADAS TIA
+CORPORACION EL ROSADO S.A
+COMOHOGAR S.A.
+CORPORACION FAVORITA C.A
+COMERCIAL KYWI S.A
+IMPORTADORA VEGA S.A
+SMC CONSTRUCCIONES S.C.C.A
+CONSORCIO CENTRO FERRETERO
+ALMACENES BOYACA S.A.
+COMERCIAL ETATEX C.A.
+SERVICIOS DE TELECOMUNICACIONES SETEL S.A.
+TIENDEC S.A.
+COLINEAL CORPORATION CIA LTDA`
+},
 
 
 
@@ -1565,6 +1647,30 @@ Katherine Mera — Planificación — <span class="muted">kpmera@indurama.com</s
 },
 
 
+{
+  name: 'Reporte a Servicio al Cliente (correo)',
+  form: true, 
+  body: `
+<form id="form-incidente" class="formbox" novalidate>
+  <div class="row">
+    <label style="flex:1">
+      Operador<br>
+      <input type="text" name="operador" placeholder="Nombre del operador" required />
+    </label>
+    <label style="flex:1">
+      Nº Ticket<br>
+      <input type="text" name="ticket" placeholder="Ej: OS-123456" />
+    </label>
+  </div>
+  <label>
+    Inconveniente<br>
+    <textarea name="incidencia" placeholder="Describe el inconveniente" required></textarea>
+  </label>
+  <button type="submit" class="btn">Enviar</button>
+  <span class="status" id="form-msg" aria-live="polite"></span>
+</form>
+`
+},
 
 
 
@@ -1646,15 +1752,20 @@ Katherine Mera — Planificación — <span class="muted">kpmera@indurama.com</s
         const hasHTML = /<[^>]+>/.test(item.body);
 
         if(hasHTML){
-          const htmlBox = document.createElement('div');
-          htmlBox.className = 'b html';
-          htmlBox.innerHTML = item.body;
-          pre.replaceWith(htmlBox);
+  const htmlBox = document.createElement('div');
+  htmlBox.className = 'b html';
+  htmlBox.innerHTML = item.body;
+  pre.replaceWith(htmlBox);
 
-          // Botón para modal
-          btn.textContent = 'Ver grande';
-          btn.style.display = 'inline-block';
-          btn.addEventListener('click', ()=> openViewer(item.body));
+  // 👇 Nuevo: si el item es un formulario, no mostrar el botón "Ver grande"
+  if (item.form) {
+    btn.style.display = 'none';
+  } else {
+    btn.textContent = 'Ver grande';
+    btn.style.display = 'inline-block';
+    btn.addEventListener('click', ()=> openViewer(item.body));
+  }
+
         }else{
           // Botón copiar para texto
           pre.innerHTML = highlight(item.body, term);
@@ -1689,6 +1800,45 @@ Katherine Mera — Planificación — <span class="muted">kpmera@indurama.com</s
     document.addEventListener('keydown', (e)=>{ if(e.ctrlKey && e.key === '/'){ e.preventDefault(); q.focus(); }});
 
     render(DATA);
+
+
+// —— Envío de formulario de incidente ——
+document.addEventListener('submit', async (e) => {
+  const form = e.target;
+  if (form && form.id === 'form-incidente') {
+    e.preventDefault();
+    const msg = form.querySelector('#form-msg');
+
+    const fd = new FormData(form);
+    const operador = (fd.get('operador') || '').trim();
+    const incidencia = (fd.get('incidencia') || '').trim();
+    const ticket = (fd.get('ticket') || '').trim();
+
+    if (!operador || !incidencia) {
+      msg.textContent = 'Completa Operador e Inconveniente.';
+      return;
+    }
+
+    msg.textContent = 'Enviando…';
+
+    try {
+      const res = await fetch('send-mail.php', { method:'POST', body: fd });
+      const data = await res.json();
+      if (data.ok) {
+        msg.textContent = 'Enviado ✅';
+        form.reset();
+      } else {
+        msg.textContent = 'No se pudo enviar. ' + (data.msg || '');
+      }
+    } catch (err) {
+      msg.textContent = 'Error de red al enviar.';
+    }
+  }
+});
+
+
+
+
   </script>
 
   <!-- ===== Componente Web del Carrusel ===== -->
