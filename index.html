@@ -8,19 +8,20 @@
 
   <style>
     :root{
-      --bg:#0f172a;--card:#0b1222;--ink:#e5e7eb;--muted:#a1a1aa;--line:#1f2937;--accent:#60a5fa;--accent2:#22d3ee;--ring:rgba(96,165,250,.35)
+      --bg:#3C4C5B ;--card:#0b1222;--ink:#e5e7eb;--muted:#a1a1aa;--line:#1f2937;--accent:#60a5fa;--accent2:#22d3ee;--ring:rgba(96,165,250,.35)
     }
     *{box-sizing:border-box}
     body{margin:0;background:radial-gradient(1000px 700px at 15% -10%,#0b1227,var(--bg));color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
     .wrap{max-width:1000px;margin:28px auto;padding:0 14px}
-    h1{font-size:clamp(22px,3vw,32px);margin:0 0 6px;font-weight:800;letter-spacing:.2px;display:flex;align-items:center;gap:10px}
+    h1{font-size:clamp(22px,3vw,32px);margin:0 0 4px;font-weight:800;letter-spacing:.2px;display:flex;align-items:center;gap:10px}
     .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 18px var(--ring)}
     p.muted{color:#94a3b8;margin:8px 0 18px}
     .bar{position:sticky;top:0;z-index:5;backdrop-filter:blur(6px);background:linear-gradient(180deg,rgba(15,23,42,.9),rgba(15,23,42,.6) 70%,transparent);padding:8px 0 16px}
     .field{display:flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:8px 8px 8px 10px;box-shadow:0 0 0 0 var(--ring)}
-    .field:focus-within{box-shadow:0 0 0 4px var(--ring);border-color:#334155}
+    .field:focus-within{box-shadow:0 0 0 4px var(--ring);border-color:#1C2630}
     input[type=text]{flex:1;background:transparent;border:0;outline:none;color:var(--ink);font-size:16px;padding:10px}
-    .pill{font-size:12px;border:1px solid #334155;border-radius:999px;padding:2px 8px;background:rgba(96,165,250,.12);color:#bfdbfe}
+   
+ .pill{font-size:12px;border:1px solid #334155;border-radius:999px;padding:2px 8px;background:rgba(96,165,250,.12);color:#bfdbfe}
     .pill + .pill {
   display: block;       /* fuerza la siguiente pill a ir abajo */
   margin-top: 8px;      /* separadita */
@@ -28,8 +29,8 @@
 }
 
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:16px}
-    .card{background:linear-gradient(180deg,#0e152b,#0b1224);border:1px solid var(--line);border-radius:16px;padding:14px;position:relative}
-    .card:hover{border-color:#334155}
+    .card{background:linear-gradient(180deg,#23313D,#0b1224);border:1px solid var(--line);border-radius:16px;padding:14px;position:relative}
+    .card:hover{border-color:#1C2630}
     .card h3{margin:0 44px 8px 0;font-size:16px}
     .copy{position:absolute;top:10px;right:10px}
     .btn{cursor:pointer;border:1px solid var(--line);background:#0b1222;color:var(--ink);padding:8px 12px;border-radius:12px;font-weight:700}
@@ -94,7 +95,7 @@
 </head>
 <body>
   <div class="wrap">
-    <h1> Respuestas Rápidas <span id="count" class="pill"></span></h1>
+    <h1> Respuestas Rápidas <span id="count" class="pill"> </span> </h1>  
     <span class="pill">Última actualización 24 Septiembre 9:45 </span>
 
     <p class="muted">Escribe una palabra (ejemplo: <em>garantía</em>, <em>Perú</em>, <em>orden</em>, <em>no contactabilidad</em>).</p>
@@ -107,16 +108,23 @@
       </div>
 
     <h3> ⚠️ Importante </h3>
-      
+
+
    <div class="notices">
   <span class="pill">
     Todos los productos comprados en eCommerce e islas, las instalaciones son gratuitas
     (Si es foráneo tiene costo de movilización)
+
   </span>
+   
+<h4><em>  Manuales </em> </h4>
 
   <a class="pill" href="https://serviandinasaec-my.sharepoint.com/personal/comercial_indurama_consensocorp_com/_layouts/15/onedrive.aspx?e=5%3A0151bfdf092447009da05cb9e260a6d7&sharingv2=true&fromShare=true&at=9&CID=91db18d8%2Ddf2e%2D42ea%2D8f0e%2D1e62a3a0ca79&id=%2Fpersonal%2Fcomercial%5Findurama%5Fconsensocorp%5Fcom%2FDocuments%2FComercial%5F%2FComercial%2FPostVenta%2F1%2E%20%C3%81rea%20T%C3%A9cnica%2FManuales%20de%20usuario%20para%20call%20center&FolderCTID=0x012000D7385C505CFF6840801C15F73BE959EF&view=0" target="_blank" rel="noopener noreferrer">
     MANUALES
   </a>
+
+
+
 </div> 
 
 
@@ -1740,7 +1748,7 @@ Katherine Mera — Planificación — <span class="muted">kpmera@indurama.com</s
 
       /* ======= CARRUSEL AL FINAL ======= */
       {
-        name: 'Boletín septiembre ',
+        name: 'Boletín Octubre ',
         wide: true,                 // <- hace la tarjeta de ancho completo
         body: `
 <x-carousel-card aspect="16/9" autoplay interval="4000">
@@ -2020,8 +2028,8 @@ document.addEventListener('submit', async (e) => {
 
     
   </script>
- <div class="footer simple">  <h3> <em> Service Playbook Indurama </h3></em>
- &copy; 2025 — Ψ Edisson Fernando Fierro C. 
+ <div class="footer simple"> <h3> <em> Service Playbook Indurama </h3></em>
+ &copy; 2025 — Ψ Edisson Fernando Fierro C.
    <p>Versión 1.0</p>
 </div>
 </body>
