@@ -21,11 +21,23 @@
     .field:focus-within{box-shadow:0 0 0 4px var(--ring);border-color:#1C2630}
     input[type=text]{flex:1;background:transparent;border:0;outline:none;color:var(--ink);font-size:16px;padding:10px}
    
- .pill{font-size:12px;border:1px solid #334155;border-radius:999px;padding:2px 8px;background:rgba(96,165,250,.12);color:#bfdbfe}
-    .pill + .pill {
-  display: block;       /* fuerza la siguiente pill a ir abajo */
-  margin-top: 8px;      /* separadita */
-  width: fit-content;   /* que no se estire a todo el ancho */
+ .pill{
+  font-size:12px;
+  border:1px solid #334155;
+  border-radius:999px;
+  padding:2px 8px;
+  background:rgba(96,165,250,.12);
+  color:#bfdbfe;
+  display:inline-flex;      /* clave para que se alineen */
+  align-items:center;
+  text-decoration:none;
+}
+
+/* Contenedor de los links en fila */
+.notices{
+  display:flex;             /* en fila */
+  gap:8px;                  /* espacio entre pills */
+  flex-wrap:wrap;           /* si no caben, pasan a la siguiente línea */
 }
 
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:16px}
@@ -110,6 +122,7 @@
     
 
 
+
    <div class="notices">
      
        
@@ -119,7 +132,9 @@
     MANUALES
   </a>
 
-
+<a class="pill" href=" https://forms.office.com/Pages/ResponsePage.aspx?id=uip0P785xEW-HqHpB62jPHVxyypeqnZCnxo7gBxjSdVUNlBPVk5aVTExMjhWTkJJNEpEQUlJUlIzNy4u">
+    REPORTAR
+  </a>
 
 </div> 
 
