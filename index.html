@@ -79,12 +79,21 @@
     .card.wide{grid-column:1 / -1}
 
     /* ===== Modal “Ver grande” ===== */
+
     dialog.viewer{border:none;padding:0;background:transparent;max-width:96vw}
-    dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
-    .viewer-box{background:#0f172a;border:1px solid var(--line);border-radius:16px;padding:12px;max-width:min(1100px,96vw)}
-    .viewer-actions{display:flex;justify-content:flex-end;margin-bottom:8px}
-    .viewer-close{border:1px solid var(--line);background:#0b1222;color:#e5e7eb;border-radius:10px;padding:6px 10px;cursor:pointer}
-    .viewer-body x-carousel-card{display:block;width:min(100%,1000px)}
+dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
+.viewer-box{
+  background:#0f172a;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+  max-width:min(1100px,96vw);
+  color:#9ca3af; /* ← gris del texto en el visor */
+}
+.viewer-actions{display:flex;justify-content:flex-end;margin-bottom:8px}
+.viewer-close{border:1px solid var(--line);background:#0b1222;color:#e5e7eb;border-radius:10px;padding:6px 10px;cursor:pointer}
+.viewer-body{color:inherit} /* hereda el gris del contenedor */
+.viewer-body x-carousel-card{display:block;width:min(100%,1000px)}
 
 
 
@@ -145,6 +154,14 @@
      rel="noopener noreferrer">
     CONSOLIDADO CC
   </a>
+
+    <a class="pill" 
+     href=" https://indurama-f99b2.web.app/teamMembersClients  " 
+     target="_blank" 
+     rel="noopener noreferrer">
+    PORTAL
+  </a>
+
 
 </div> 
 
