@@ -79,8 +79,9 @@
     .card.wide{grid-column:1 / -1}
 
     /* ===== Modal “Ver grande” ===== */
+      
 
-    dialog.viewer{border:none;padding:0;background:transparent;max-width:96vw}
+dialog.viewer{border:none;padding:0;background:transparent;max-width:96vw}
 dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
 .viewer-box{
   background:#0f172a;
@@ -94,6 +95,8 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
 .viewer-close{border:1px solid var(--line);background:#0b1222;color:#e5e7eb;border-radius:10px;padding:6px 10px;cursor:pointer}
 .viewer-body{color:inherit} /* hereda el gris del contenedor */
 .viewer-body x-carousel-card{display:block;width:min(100%,1000px)}
+
+//ANIMACIONES
 
 
 
@@ -129,8 +132,11 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
       </div>
 
     
-<br>  
+ 
 
+<h5> ⚠️ Atajos </h5>
+
+<div class="notices">
 
  <div class="notices">
 
@@ -155,7 +161,8 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
     CONSOLIDADO CC
   </a>
 
-    <a class="pill" 
+
+   <a class="pill" 
      href=" https://indurama-f99b2.web.app/teamMembersClients  " 
      target="_blank" 
      rel="noopener noreferrer">
@@ -170,7 +177,9 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
   </a>
 
 
-</div> 
+</div>
+
+
 
 
       
@@ -308,7 +317,8 @@ Estaremos gustosos de servirle. ¡Que tenga un excelente día!` },
 
 
 
-
+{ name: 'Hora del técnico',
+        body: 'Estimado cliente le informamos que su orden de servicio: ___ se encuentra planificada para el día: ___\nPuede comunicarse de manera directa con el técnico: ___ al número: ___\nRecuerde nuestros horarios de visita: desde las 9:00 am hasta 18h00 pm.\nGracias por comunicarse con Indurama, es un placer servirle.' },
 
 
 
@@ -936,7 +946,6 @@ COLINEAL CORPORATION CIA LTDA`
 
 
 
-
 {
   name: 'Planificadores LATAM',
   body: '<div style="background:#f8fafc;padding:16px;border-radius:10px;border:1px solid #e2e8f0;font-family:Segoe UI, sans-serif;line-height:1.6;color:#1e293b;">'
@@ -955,7 +964,6 @@ COLINEAL CORPORATION CIA LTDA`
       + '</ul>'
       + '</div>'
 },
-
 
 
 {
@@ -1007,50 +1015,7 @@ COLINEAL CORPORATION CIA LTDA`
 
 
 
-{
-  name: 'IMPORTANTE - BOLETÍN CONTACT CENTER',
-  body: '<div style="font-family:Georgia, Times, serif; line-height:1.6; color:#1f2937; padding:16px; border:1px solid #d1d5db; border-radius:8px; box-shadow:0 6px 30px rgba(0,0,0,.08); background: \
-    radial-gradient(circle at 20% 15%, rgba(0,0,0,.025) 0 12%, transparent 13%) 0 0/180px 180px, \
-    radial-gradient(circle at 80% 60%, rgba(0,0,0,.02) 0 10%, transparent 11%) 0 0/220px 220px, \
-    linear-gradient(#f5f5f0,#f3f3ed);">\
-    <div style="text-align:center; letter-spacing:.5px; margin-bottom:10px;">\
-      <div style="font-size:22px; font-weight:700; text-transform:uppercase;">Boletín Contact Center</div>\
-      <div style="font-size:12px; color:#6b7280; margin-top:2px;"></div>\
-    </div>\
-    <hr style="border:0; border-top:2px solid #111; margin:6px 0 14px;">\
-    <div style="column-count:1; column-gap:24px;">\
-      <h4 style="margin:0 0 6px; font-size:16px; text-transform:uppercase; letter-spacing:.8px;">Distribución LATAM</h4>\
-      <p style="margin:0 0 10px;">\
-        <strong>Maycol Herrera</strong> — <a href="mailto:mherrerab@indurama.com" style="color:inherit; text-decoration:none;">mherrerab@indurama.com</a><br>\
-        • Colombia · República Dominicana · El Salvador<br><br>\
-        <strong>Cristina Gárate</strong> — <a href="mailto:cgarate@indurama.com" style="color:inherit; text-decoration:none;">cgarate@indurama.com</a><br>\
-        • Uruguay · Guatemala · Nicaragua · Panamá · Costa Rica · Bolivia · Honduras\
-      </p>\
-      <hr style="border:0; border-top:1px solid #9ca3af; margin:10px 0 12px;">\
-      <h4 style="margin:0 0 6px; font-size:16px; text-transform:uppercase; letter-spacing:.8px;">Canales de contacto según origen de compra</h4>\
-      <ul style="margin:0 0 10px; padding-left:18px;">\
-        <li>Compra en <strong>Indurama.com</strong> (web): <strong>0984001934</strong>.</li>\
-        <li>Compra por <strong>WhatsApp</strong>: <strong>0999303030</strong>.</li>\
-      </ul>\
-      <hr style="border:0; border-top:1px dashed #b6b6b6; margin:10px 0 12px;">\
-      <h4 style="margin:0 0 6px; font-size:16px; text-transform:uppercase; letter-spacing:.8px;">Diferenciación del tipo de compra (factura)</h4>\
-      <p style="margin:0 0 10px;">\
-        — Revisar el campo “Observaciones” de la factura.<br>\
-        — Si aparece un <strong>número de pedido</strong> ⇒ <strong>Venta interna</strong>.<br>\
-        — Si <strong>no</strong> tiene número de pedido (ej.: “Venta CC Recreo”) ⇒ <strong>Venta externa</strong>.\
-      </p>\
-      <hr style="border:0; border-top:1px dotted #b6b6b6; margin:10px 0 12px;">\
-      <h4 style="margin:0 0 6px; font-size:16px; text-transform:uppercase; letter-spacing:.8px;">Instalaciones gratuitas</h4>\
-      <p style="margin:0;">\
-        — Todos los productos comprados en <strong>eCommerce</strong> e <strong>islas</strong> tienen instalación <strong>gratuita</strong>.<br>\
-        — Si es <strong>foráneo</strong>, aplica costo de <strong>movilización</strong>.\
-      </p>\
-    </div>\
-  </div>'
-},
 
-      
-      
 { 
   name: '<span style="color:red; font-weight:bold;"> REFERENCIAL </span>',
   body: `<span style="color:red; font-weight:bold;"> </span>` 
@@ -1437,6 +1402,52 @@ Avenida de la Cultura, Plaza Comercial Ecopark, Galpón 105
 },
 
    
+{
+  name: 'IMPORTANTE - BOLETÍN CONTACT CENTER',
+wide: true,
+  body: '<div style="font-family:Georgia, Times, serif; line-height:1.6; color:#1f2937; padding:16px; border:1px solid #d1d5db; border-radius:8px; box-shadow:0 6px 30px rgba(0,0,0,.08); background: \
+    radial-gradient(circle at 20% 15%, rgba(0,0,0,.025) 0 12%, transparent 13%) 0 0/180px 180px, \
+    radial-gradient(circle at 80% 60%, rgba(0,0,0,.02) 0 10%, transparent 11%) 0 0/220px 220px, \
+    linear-gradient(#f5f5f0,#f3f3ed);">\
+    <div style="text-align:center; letter-spacing:.5px; margin-bottom:10px;">\
+      <div style="font-size:22px; font-weight:700; text-transform:uppercase;">Boletín Contact Center</div>\
+      <div style="font-size:12px; color:#6b7280; margin-top:2px;"></div>\
+    </div>\
+    <hr style="border:0; border-top:2px solid #111; margin:6px 0 14px;">\
+    <div style="column-count:1; column-gap:24px;">\
+      <h4 style="margin:0 0 6px; font-size:16px; text-transform:uppercase; letter-spacing:.8px;">Distribución LATAM</h4>\
+      <p style="margin:0 0 10px;">\
+        <strong>Maycol Herrera</strong> — <a href="mailto:mherrerab@indurama.com" style="color:inherit; text-decoration:none;">mherrerab@indurama.com</a><br>\
+        • Colombia · República Dominicana · El Salvador<br>\
+        <strong>Cristina Gárate</strong> — <a href="mailto:cgarate@indurama.com" style="color:inherit; text-decoration:none;">cgarate@indurama.com</a><br>\
+        • Uruguay · Guatemala · Nicaragua · Panamá · Costa Rica · Bolivia · Honduras\
+      </p>\
+      <hr style="border:0; border-top:1px solid #9ca3af; margin:10px 0 12px;">\
+      <h4 style="margin:0 0 6px; font-size:16px; text-transform:uppercase; letter-spacing:.8px;">Canales de contacto según origen de compra</h4>\
+      <ul style="margin:0 0 10px; padding-left:18px;">\
+        <li>Compra en <strong>Indurama.com</strong> (web): <strong>0984001934</strong>.</li>\
+        <li>Compra por <strong>WhatsApp</strong>: <strong>0999303030</strong>.</li>\
+      </ul>\
+      <hr style="border:0; border-top:1px dashed #b6b6b6; margin:10px 0 12px;">\
+      <h4 style="margin:0 0 6px; font-size:16px; text-transform:uppercase; letter-spacing:.8px;">Diferenciación del tipo de compra (factura)</h4>\
+      <p style="margin:0 0 10px;">\
+        — Revisar el campo “Observaciones” de la factura.<br>\
+        — Si aparece un <strong>número de pedido</strong> ⇒ <strong>Venta interna</strong>.<br>\
+        — Si <strong>no</strong> tiene número de pedido (ej.: “Venta CC Recreo”) ⇒ <strong>Venta externa</strong>.\
+      </p>\
+      <hr style="border:0; border-top:1px dotted #b6b6b6; margin:10px 0 12px;">\
+      <h4 style="margin:0 0 6px; font-size:16px; text-transform:uppercase; letter-spacing:.8px;">Instalaciones gratuitas</h4>\
+      <p style="margin:0;">\
+        — Todos los productos comprados en <strong>eCommerce</strong> e <strong>islas</strong> tienen instalación <strong>gratuita</strong>.<br>\
+        — Si es <strong>foráneo</strong>, aplica costo de <strong>movilización</strong>.\
+      </p>\
+    </div>\
+  </div>'
+},
+
+
+
+
 
       /* ======= CARRUSEL AL FINAL ======= */
       {
