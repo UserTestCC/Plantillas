@@ -138,56 +138,18 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
 </style>
 
 
-<span class="pill">Última actualización 13 octubre 2025 - 16:23 </span> 
-<span id="count" class="pill"></span>
-
-<!-- NUEVO: caja para guardar el nombre del asesor -->
-<div class="userbox" style="
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:8px;
-  margin:12px 0 8px;
-  font-size:14px;
-  color:#e5e7eb;
-">
-  <span class="pill" style="background:rgba(34,211,238,.12);color:#fff;border-color:#22d3ee;">
-    Asesor:
-  </span>
-
-  <input id="agentNameInput" type="text" placeholder="Tu nombre"
-    style="
-      background:#0b1222;
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:8px 10px;
-      color:#e5e7eb;
-      font:inherit;
-      min-width:140px;
-      outline:none;
-    ">
-
-  <button id="saveAgentNameBtn"
-    class="btn small"
-    style="font-size:12px;line-height:1;">
-    Guardar
-  </button>
-
-  <span id="agentNameStatus" style="font-size:12px;color:#94a3b8;"></span>
-</div>
-
-<p class="muted">Escribe una palabra (ejemplo: <em>garantía</em>, <em>Perú</em>, ...)</p>
-
-<div class="bar">
-  <div class="field">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" ...>...</svg>
-    <input id="q" type="text" placeholder="Buscar" autocomplete="off"/>
-    <button id="clear" class="btn small ghost">Limpiar</button>
-  </div>
-</div>
 
 
+    <span class="pill">Última actualización 13 octubre 2025 - 16:23 </span> <span id="count" class="pill"> </span>
 
+    <p class="muted">Escribe una palabra (ejemplo: <em>garantía</em>, <em>Perú</em>, <em>orden</em>, <em>no contactabilidad</em>).</p>
+
+    <div class="bar">
+      <div class="field">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/3000/svg" aria-hidden="true"><path d="M21 21L15.8 15.8M18 10.5A6.5 6.5 0 1 1 5 10.5a6.5 6.5 0 0 1 13 0Z" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="q" type="text" placeholder="Buscar" autocomplete="off"/>
+        <button id="clear" class="btn small ghost">Limpiar</button>
+      </div>
 
     
  
@@ -206,7 +168,9 @@ h5 {
 }
 </style>
 
- 
+<h5>⚠️ Atajos</h5>
+
+
 <div class="notices">
 
  <div class="notices">
@@ -291,83 +255,6 @@ h5 {
     const strip = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     const $ = sel => document.querySelector(sel);
 
-
-
-
-
-// === Nombre del asesor (personalización) =====================
-
-// Clave donde vamos a guardar el nombre
-const AGENT_KEY = 'agentName';
-
-// Estado en memoria
-let agentName = '';
-
-// Cargar al iniciar la página
-function loadAgentName() {
-  const saved = localStorage.getItem(AGENT_KEY);
-  if (saved && typeof saved === 'string') {
-    agentName = saved;
-  } else {
-    agentName = '';
-  }
-
-  // Pintar en el input si existe
-  const inp = $('#agentNameInput');
-  if (inp) {
-    inp.value = agentName;
-  }
-}
-
-// Guardar cuando el usuario hace click en "Guardar"
-function saveAgentName() {
-  const inp = $('#agentNameInput');
-  const status = $('#agentNameStatus');
-  if (!inp) return;
-
-  agentName = inp.value.trim();
-
-  localStorage.setItem(AGENT_KEY, agentName || '');
-
-  // Feedback visual suave al usuario
-  if (status) {
-    if (agentName) {
-      status.textContent = `Guardado como "${agentName}".`;
-    } else {
-      status.textContent = 'Nombre borrado.';
-    }
-    // Borramos el mensajito después de unos segundos
-    setTimeout(() => { status.textContent = ''; }, 4000);
-  }
-
-  // Re-render de la lista para que actualice los ___
-  render(currentList, $('#q').value || '');
-}
-
-// Reemplaza todos los ___ en una plantilla por el nombre guardado
-function applyAgentName(text) {
-  if (!text) return text;
-  if (!agentName) return text; // si no hay nombre, dejamos los ---
-
-  // global + multiline porque tus bodies tienen saltos de línea
-  return text.replace(/---/g, agentName);
-}
-
-// Listeners del botón Guardar (después de que el DOM cargue)
-document.addEventListener('DOMContentLoaded', () => {
-  loadAgentName();
-
-  const btnSave = $('#saveAgentNameBtn');
-  if (btnSave) {
-    btnSave.addEventListener('click', saveAgentName);
-  }
-});
-
-
-
-
-
-
     // ======= DATA =======
     const DATA = [
 
@@ -379,13 +266,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // SALUDOS
 { name: 'Saludo estándar 1',
-  body: `Hola soy --- , asesor de servicio técnico Indurama. ¿En qué le puedo servir?` },
+  body: `Hola soy ___ , asesor de servicio técnico Indurama. ¿En qué le puedo servir?` },
 
 { name: 'Saludo estándar 2',
-  body: `Hola soy --- , asesor de servicio técnico Indurama, su orden de atención está siendo procesada.` },
+  body: `Hola soy ___ , asesor de servicio técnico Indurama, su orden de atención está siendo procesada.` },
 
 { name: 'Saludo fuera de garantía',
-  body: `Hola soy --- , asesor de servicio técnico Indurama. Su producto se encuentra fuera de garantía, la visita tendrá un costo de 25 dólares, más
+  body: `Hola soy ___ , asesor de servicio técnico Indurama. Su producto se encuentra fuera de garantía, la visita tendrá un costo de 25 dólares, más
 los valores por repuestos o mano de obra que nuestro técnico le indique en la visita.
 ¿Desea agendar la orden de servicio?` },
 
@@ -601,16 +488,13 @@ Datos de contacto:
     '10028889 – HERVIDOR DE AGUA IND IHCR24 CR 1.7L'
 },
 
-{
+      {
   name: 'SECADORAS',
   body:
     '10004981 – SEC-20BLA\n-----------------------------------\n' +
     '10003906 – SEC-20DGR\n-----------------------------------\n' +
     '10008622 – SEC-21FRC – APILABLE'
 },
-
-
-
 //UTILITARIOS
 
 
@@ -1289,57 +1173,102 @@ COLINEAL CORPORATION CIA LTDA`
 
 
 
- //zonaspeligrosas
+     
+ 
+//zonaspeligrosas
 
 
+      
 
 
     
- 
-
-//distritos
-{
-  name: 'DISTRITOS GUAYAQUIL',
+ { name: 'BASTIÓN POPULAR',
 wide: true,
   body:
-    '[DISTRITO 1]\n' +
-    'Ruta: VÍA A LA COSTA\n' +
-    'Cobertura: URB. VÍA A LA COSTA – SAN GERÓNIMO – CHONGÓN – HASTA EL KM 24 PEAJE – CEIBOS – URB. LAS CUMBRES – COLINAS DE LOS CEIBOS\n\n' +
-
-    '[DISTRITO 2]\n' +
-    'Ruta: CENTRO\n' +
-    'Cobertura: TODAS LAS CALLES DEL CENTRO – BARRIO GARAY – BARRIO CUBA – BARRIO CENTENARIO\n\n' +
-
-    '[DISTRITO 3]\n' +
-    'Ruta: CDLA DEL NORTE\n' +
-    'Cobertura: KENNEDY VIEJA Y NUEVA – URDESA – LOMAS DE URDESA – PORTÓN DE LAS LOMAS – ALBORADA (TODAS LAS ETAPAS) – SAUCES (TODAS LAS ETAPAS) – GUAYACANES (TODAS LAS ETAPAS) – SAMANES (TODAS LAS ETAPAS) – CDLA BRISAS DEL NORTE – ROSALES 1 Y 2 – CDLA GOLETA ALCANCE – CDLAS IETEL – CDLA ATARAZANA – CDLA EL CÓNDOR – CDLA COLINAS DE LA ALBORADA – CDLA BOSQUES DEL SALADO – CDLA LOS ÁLAMOS – CIUDAD COLÓN – URDENOR 1 Y 2 – URBANOR – CIUDAD DE DIOS DE LA CDLA LOS ROSALES\n\n' +
-
-    '[DISTRITO 4]\n' +
-    'Ruta: DURÁN\n' +
-    'Cobertura: TODO DURÁN HASTA ANTES DEL PEAJE KM 13\n\n' +
-
-    '[DISTRITO 5]\n' +
-    'Ruta: INVASIONES\n' +
-    'Cobertura: NUEVA PROSPERINA (TODAS LAS COOPERATIVAS) – FLOR DE BASTIÓN (TODOS LOS BLOQUES) – EL FORTÍN (TODOS LOS BLOQUES) – PARAÍSO DE LA FLOR (TODOS LOS BLOQUES) – SOCIO VIVIENDA (TODAS LAS ETAPAS) – COOP EBENEZER (TODAS LAS ETAPAS) – COOP VOLUNTAD DE DIOS – SERGIO TORAL (TODAS LAS ETAPAS Y SUS COOPERATIVAS) – COOP JANETH TORAL (TODAS) – COOP EL PARACAIDISTA – MONTE SINAI (TODAS LAS COOPERATIVAS) – URB. ECOCITY – ENTRADA DE LA 21 – LOMAS DE LA FLORIDA – CORDILLERA DEL CÓNDOR – UNIDOS POR LA PAZ – CIUDAD DE DIOS – COOP SAN FRANCISCO 1 Y 2 – COOP VALLE DEL CERRO – COOP VALLE VERDE – COOP MAYAICU – VALERIO ESTACIO (TODAS LAS ETAPAS Y SUS COOPERATIVAS) – HORIZONTES DEL FORTÍN – BASTIÓN POPULAR BLOQUE 10 Y 11 – COOP ENNER PARRALES – COOP TRINIDAD DE DIOS – COOP EL SOL – GUERREROS DEL FORTÍN – COOP 31 DE OCTUBRE – COOP REINALDO QUIÑÓNEZ 1, 2 Y 3 – COOP LA CAROLINA – COOP BELLA VISIÓN\n\n' +
-
-    '[DISTRITO 6]\n' +
-    'Ruta: VÍA A DAULE\n' +
-    'Cobertura: ORQUÍDEAS – VERGELES (TODAS LAS ETAPAS) – LOS GERANIOS – CDLA EL MAESTRO – MAPASINGUE ESTE Y OESTE (CALLES Y COOPERATIVAS) – MIRADOR DEL NORTE – SECTOR JUAN MONTALVO (TODAS LAS COOPERATIVAS) – HUANCAVILCA NORTE – LA FLORIDA (TODAS LAS COOP) – COLINAS DEL SOL – BASTIÓN POPULAR (DEL BLOQUE 1 HASTA EL BLOQUE 9) – MUCHO LOTE 1 (TODAS LAS COOP) – VILLA ESPAÑA 1 (TODAS LAS ETAPAS) – ORQUÍDEAS (TODAS LAS ETAPAS) – VÍA A DAULE HASTA PUENTE LUCÍA – CIUDAD SANTIAGUI – VILLA BONITA (TODOS LOS BLOQUES) – URB. BEATA MERCEDES MOLINA – MUCHO LOTE 2 – CDLAs VÍA TERMINAL PASCUALES – COOP 3 DE DICIEMBRE – ASAD BUCARAM – PAQUISHA – ENTRADA DE GUAMOTE – SAN NICOLÁS (NO PARROQUIA PASCUALES)\n\n' +
-
-    '[DISTRITO 7]\n' +
-    'Ruta: SUBURBIO\n' +
-    'Cobertura: SUBURBIO DESDE LA 8AVA HASTA LA 45AVA – SECTOR CISNE 2 – BELLAVISTA – SECTOR LA CHALA – SECTOR CRISTO DEL CONSUELO – COOP SAN EDUARDO – CDLA GIRASOLES\n\n' +
-
-    '[DISTRITO 8]\n' +
-    'Ruta: GUASMO\n' +
-    'Cobertura: GUASMO NORTE – GUASMO CENTRAL – GUASMO SUR – FLORESTA 1, 2 Y 3 – SECTOR FERTISA – SECTOR ESTEROS (TODAS LAS COOPERATIVAS) – SECTOR MALVINAS (TODAS LAS COOPERATIVAS) – CDLA LOS TULIPANES – PRADERA 1, 2 Y 3 – CDLA 9 DE OCTUBRE – CDLA VILLAMIL – CDLA LA SAIBA (HASTA LA CALLE VICENTE TRUJILLO) – ISLA TRINITARIA (TODAS LAS COOPERATIVAS) – CDLA HUANCAVILCA SUR – LA FRAGATA – SANTIAGUITO DE ROLDÓS – CDLA AMAZONAS\n\n' +
-
-    '[DISTRITO 9]\n' +
-    'Ruta: VÍA SAMBORONDÓN\n' +
-    'Cobertura: URB. LA PUNTILLA – CIUDAD CELESTE – ENTRE RÍOS – LAS RIVERAS – VISTA AL RÍO – PUERTA AL RÍO – EL RÍO – RINCONADA DEL LAGO – URB. LAS CONDES – PARQUE MAGNO – SAN ANDRÉS – LAS PIRÁMIDES – SAN ISIDRO – GUAYAQUIL TENIS – MIRASOL – RÍO LINDO – MOCOLÍ – MOCOLÍ GOLF CLUB – BLUE BAY – PLAZA LAGOS – CASTELAGO – ENTRE LAGOS – VISTA SOL – LAGUNA DEL SOL – CASA LAGUNA DEL SOL – BUIJO HISTÓRICO – AIRES DEL BATÁN – VISTA AL PARQUE – ITALIA – URB. LA RIOJA – CASA LAGUNA – URB. DE LA AV. LEÓN FEBRES CORDERO – URB. LA JOYA – URB. VILLA CLUB – URB. VOLARE – URB. ALTOS DEL RÍO – URB. MATICES – URB. EL CONDADO – URB. BALI – URB. CASA LAGUNA – URB. DE LA AURORA – VÍA A LA AURORA\n'
+    'BASTIÓN POPULAR BLOQUE 10 Y 11 NO SE ATIENDEN / PARROQUIA TARQUI – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'COOP CASA DEL TIGRE - SECTOR LOS MANGOS / PARROQUIA PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'COOP NUEVA GUAYAQUIL - SECTOR LOS MANGUITOS / PARROQUIA PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'COOP VALLE DE LA FLOR (DESDE LA CANCHA HACIA ARRIBA) / PARROQUIA PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'BASTIÓN BLOQUE 10 A (CUEVA DEL LOBO) / PARROQUIA TARQUI – ZONA NORTE – ZONA RESTRINGIDA – ALTA PELIGROSIDAD\n' +
+    'ENTRADA DE LA 21 (TODO) / PARROQUIA TARQUI – ZONA NORTE – ZONA RESTRINGIDA – ALTA PELIGROSIDAD'
 },
 
 
+{ name: 'FLOR DE BASTIÓN',
+wide: true,
+  body:
+    'FLOR DE BASTIÓN (TODOS LOS BLOQUES Y COOPERATIVAS) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'LAS DELICIAS Y COOP A SUS ALREDEDORES / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'COOP FLOR DE BASTIÓN BLOQUE 9 / PASCUALES – ZONA NORTE – ZONA RESTRINGIDA – ALTA PELIGROSIDAD\n' +
+    'COOP FLOR DE BASTIÓN BLOQUE 12 (COOP TWINZA) / PASCUALES – ZONA NORTE – ZONA RESTRINGIDA – ALTA PELIGROSIDAD\n' +
+    'URB. ECOCITY / PASCUALES – ZONA NORTE – ZONA RESTRINGIDA – ALTA PELIGROSIDAD\n' +
+    'URB. ECOBOSQUE / PASCUALES – ZONA NORTE – ZONA RESTRINGIDA – ALTA PELIGROSIDAD'
+},
+
+
+{ name: 'LA LADRILLERA',
+wide: true,
+  body:
+    'PROMESA DE DIOS (TODO) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'CIUDAD DE DIOS (TODO) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'DIVINO NIÑO 1 Y 2 (COLINDA CON SOCIO VIVIENDA 2) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'LA CARBONERA (TODO) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'LA CAROLINA Y COOP A SUS ALREDEDORES / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'LAS IGUANAS (TODO) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'NUEVA GENERACIÓN LADRILLERA (TODO) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD'
+},
+
+
+{ name: 'LOMAS DE LA FLORIDA',
+wide: true,
+  body:
+    'COOP ENNER PARRALES (ESCALINATAS) / TARQUI – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'COOP LOMAS DE LA FLORIDA (ESCALINATAS) / TARQUI – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD'
+},
+
+
+{ name: 'MARTHA DE ROLDÓS',
+wide: true,
+  body:
+    'COLINAS DE LA MARTHA (ESCALINATAS) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'LAS ROCAS (ESCALINATAS) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD'
+},
+
+
+{ name: 'MONTE SINAI',
+wide: true,
+  body:
+    'THALIA TORAL (SECTOR LAS OLLAS) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'CANELAR HOLGUITA / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'LAS MARIAS / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'SERGIO TORAL 2 / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'SHIBLOM / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'TRINIDAD DE DIOS (LOS TANQUES Y PARTE ALTA) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'VOLUNTAD DE DIOS (PASANDO LA ZANJA) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'SENDERO DE DIOS / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'CAÑAVERAL / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'MANOS DE DIOS / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'ESPERANZA DE DIOS / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'LAS CUMBRES / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'CAMINO AL SOL / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'VALLE HERMOSO 2 (INVASIÓN) / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    '3 BOCAS / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'FONDO DEL TRIUNFO / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'REALIDAD DE DIOS / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD\n' +
+    'SERGIO TORAL 3 / PASCUALES – ZONA NORTE – ZONA EXCLUIDA – ALTA PELIGROSIDAD'
+},
+
+      
+
+     
+
+   
+
+     
+
+     
+
+       
  
 
 
@@ -1349,7 +1278,7 @@ wide: true,
 
       
 
-      
+
 
 //centros de servicio
 
@@ -1670,103 +1599,55 @@ Avenida de la Cultura, Plaza Comercial Ecopark, Galpón 105
       return text.replace(re,'<span class="hl">$1</span>');
     }
 
-  
-// función que ya definimos antes
-// const AGENT_KEY = 'agentName';
-// let agentName = '';
-// function applyAgentName(text) { ... }
-// etc.
+    function render(list, term=''){
+      grid.innerHTML = '';
+      list.forEach(item => {
+        const node = tpl.content.cloneNode(true);
+        const card = node.querySelector('.card');
+        const h3 = node.querySelector('.t');
+        const pre = node.querySelector('.b.text');
+        const btn = node.querySelector('.copy');
 
-// IMPORTANTE: necesitamos tener currentList declarado en el scope global:
-let currentList = [];
+        if(item.wide) card.classList.add('wide');
+        h3.innerHTML = highlight(item.name, term);
 
-function render(list, term = '') {
-  grid.innerHTML = '';
+        const hasHTML = /<[^>]+>/.test(item.body);
 
-  list.forEach(item => {
-    const node = tpl.content.cloneNode(true);
-    const card = node.querySelector('.card');
-    const h3   = node.querySelector('.t');
-    const pre  = node.querySelector('.b.text');
-    const btn  = node.querySelector('.copy');
+        if(hasHTML){
+  const htmlBox = document.createElement('div');
+  htmlBox.className = 'b html';
+  htmlBox.innerHTML = item.body;
+  pre.replaceWith(htmlBox);
 
-    // aplica clase wide si es boletín / carrusel / info grande
-    if (item.wide) card.classList.add('wide');
+  // 👇 Nuevo: si el item es un formulario, no mostrar el botón "Ver grande"
+  if (item.form) {
+    btn.style.display = 'none';
+  } else {
+    btn.textContent = 'Ver grande';
+    btn.style.display = 'inline-block';
+    btn.addEventListener('click', ()=> openViewer(item.body));
+  }
 
-    // título con highlight normal (esto es seguro siempre)
-    h3.innerHTML = highlight(item.name, term);
+        }else{
+          // Botón copiar para texto
+          pre.innerHTML = highlight(item.body, term);
+          btn.addEventListener('click', async () => {
+            let text = item.body;
+            const a = agent?.value?.trim?.();                 
+            if(a) text = text.replace(/\{\{\s*\}\}/g, a).replace(/\{\{\s*\}\}/g, a);
+            try{
+              await navigator.clipboard.writeText(text);
+              btn.textContent='Copiado ✔';
+              setTimeout(()=>btn.textContent='Copiar',1200);
+            }catch{ alert('No se pudo copiar.'); }
+          });
+        }
 
-    // 1. Personalizamos el body reemplazando ___ por el nombre guardado
-    const personalizedBody = applyAgentName(item.body);
-
-    // 2. Detectamos si es HTML
-    const hasHTML = /<[^>]+>/.test(personalizedBody);
-
-    if (hasHTML) {
-      const htmlBox = document.createElement('div');
-      htmlBox.className = 'b html';
-
-      // 🛡 Protección especial:
-      // Si la tarjeta es wide (boletines, carrusel, etc.),
-      // NO metemos highlight dentro del HTML porque eso rompe la estructura.
-      // Usamos el HTML tal cual, solo con el nombre reemplazado.
-      if (item.wide) {
-        htmlBox.innerHTML = personalizedBody;
-      } else {
-        // Tarjetas normales con HTML (formularios lindos que hicimos):
-        // aquí sí podemos resaltar términos buscados.
-        const marcado = highlight(personalizedBody, term);
-        htmlBox.innerHTML = marcado;
-      }
-
-      pre.replaceWith(htmlBox);
-
-      // Botón:
-      if (item.form) {
-        // formularios no necesitan modal ni copia
-        btn.style.display = 'none';
-      } else if (item.wide) {
-        // wide: típicamente boletines/carrusel
-        // Mostramos "Ver grande" para verlo en modal completo
-        btn.textContent = 'Ver grande';
-        btn.style.display = 'inline-block';
-        btn.addEventListener('click', () => openViewer(personalizedBody));
-      } else {
-        // html normal con highlight
-        btn.textContent = 'Ver grande';
-        btn.style.display = 'inline-block';
-        btn.addEventListener('click', () => openViewer(personalizedBody));
-      }
-
-    } else {
-      // Texto plano
-      // Aquí sí podemos resaltar búsqueda SIN miedo
-      const marcadoPlano = highlight(personalizedBody, term);
-      pre.innerHTML = marcadoPlano;
-
-      btn.textContent = 'Copiar';
-      btn.style.display = 'inline-block';
-      btn.addEventListener('click', () => copyText(personalizedBody));
+        grid.appendChild(node);
+      });
+      count.textContent = `${list.length} de ${DATA.length}`;
+      empty.hidden = list.length !== 0;
     }
-
-    grid.appendChild(node);
-  });
-
-  // actualizar contador de resultados
-  count.textContent = list.length + ' plantillas';
-
-  // guardamos referencia de la lista actual para re-render al cambiar nombre
-  currentList = list;
-}
-
-
-
-
-
-
-
-
-
 
     function doSearch(){
       const term = q.value.trim();
