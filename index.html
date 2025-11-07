@@ -1500,7 +1500,179 @@ Avenida de la Cultura, Plaza Comercial Ecopark, Galpón 105
     </ul>
   `
 },   
- 
+
+
+
+
+
+{
+  name: 'Relajarme',
+  wide: true,
+  body: `
+  <div class="calma-23">
+    <style>
+      /* Fuente profesional (Inter) */
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+
+
+.calma-23 .center > h1{
+  color:#ffffff !important;
+  font-size:25px;
+  line-height:1.2;
+  margin:0 auto 6px;
+  font-weight:800;
+  text-align:center;
+  letter-spacing:.2px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
+      .calma-23 *{box-sizing:border-box; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial;}
+      .calma-23 .center{
+        width:min(900px, 96vw);
+        border:1px solid var(--line); border-radius:16px; padding:22px; margin-inline:auto;
+        background:
+          radial-gradient(800px 500px at 10% -10%, rgba(21,94,117,.25), transparent 60%),
+          radial-gradient(700px 400px at 110% 10%, rgba(20,184,166,.20), transparent 60%),
+          linear-gradient(180deg, #0b1528 0%, var(--panel) 100%);
+        color:var(--ink);
+        box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.02);
+      }
+      .calma-23 h1{
+        color:var(--accent);
+        margin:0 0 8px; font-weight:800; text-align:center; letter-spacing:.2px
+      }
+      .calma-23 .lead{color:var(--muted); margin:0 0 16px; text-align:center}
+      .calma-23 .btns{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
+
+      .calma-23 button{
+        background:linear-gradient(180deg, var(--brand), var(--brand2));
+        border:1px solid rgba(255,255,255,.08); padding:10px 14px;
+        border-radius:12px; color:white; font-size:15px; font-weight:600; cursor:pointer;
+        transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+        box-shadow: 0 6px 16px rgba(16,185,129,.18);
+      }
+      .calma-23 button:hover{ transform: translateY(-1px); box-shadow: 0 8px 20px rgba(56,189,248,.25) }
+      .calma-23 button:active{ transform: translateY(0); opacity:.9 }
+
+      .calma-23 .msg{
+        margin:18px auto 0; font-size:18px; max-width:740px; text-align:center; line-height:1.6;
+        border:1px solid var(--line); border-radius:14px; padding:16px;
+        background: linear-gradient(180deg, rgba(12,25,44,.85), rgba(11,21,41,.85));
+        min-height:64px;
+      }
+
+      .calma-23 .foot{margin-top:12px; font-size:13px; color:var(--muted); text-align:center}
+      .calma-23 .countBox{display:grid; gap:10px; place-items:center}
+      .calma-23 .countNum{font-size:48px; font-weight:800; letter-spacing:1px}
+      .calma-23 .hint{font-size:14px; color:#cbd5e1}
+    </style>
+
+    <section class="center"
+      data-agresivo='[
+        "Exhala lento antes de responder. Valida primero: «Entiendo que esto le molestó».",
+        "Voz pausada. Límite breve: «Para servirle, mantengamos un lenguaje respetuoso».",
+        "Define una sola meta de la llamada y vuelve a ella cuando te desvíen.",
+        "No discutas percepciones; ofrece pasos concretos con tiempos realistas.",
+        "Repite internamente: «No es personal, es la situación». Mantén foco en solución.",
+        "Reformula ataques en necesidades: «Usted necesita X. Puedo ofrecer A o B».",
+        "Usa silencios de 1–2 s para desescalar sin cortar la comunicación.",
+        "Ancla corporal: hombros abajo, mandíbula suelta, respiración nasal.",
+        "Guion 3 pasos: Empatía → Límite → Opción A/B.",
+        "Pide hechos: «¿Me confirma número/fecha exacta?»"
+      ]'
+      data-saturado='[
+        "Pausa de 60 s: respira 4–6 cinco veces y suelta hombros.",
+        "Bebe agua; hidratar mejora atención y reduce tensión.",
+        "Desvincula la vista 20 s mirando lejos; descansa ojos.",
+        "Estira cuello y manos 30 s. Libera microtensiones.",
+        "Una cosa por vez: define la próxima acción única.",
+        "Frase ancla: «Ahora solo esta llamada».",
+        "Respira por nariz 4 s y exhala 6 s. Tres ciclos ahora.",
+        "Evita multitarea. Cierra pestañas no necesarias.",
+        "Checklist rápido: respiré, me moví, tomé agua.",
+        "Reduce autocrítica: progreso > perfección."
+      ]'
+      data-reencuadres='[
+        ["«No aguanto más hoy»","«Estoy saturado; hago una pausa breve y retomo con calma»"],
+        ["«Siempre me toca lo peor»","«Hoy es difícil, y aún así puedo avanzar paso a paso»"],
+        ["«Si me equivoco, es un desastre»","«Puedo corregir y aprender; error ≠ fracaso»"],
+        ["«No voy a poder con este caso»","«Lo divido en pasos y pido apoyo si es necesario»"],
+        ["«Me bloqueé»","«Respiro 4–6 y formulo la próxima pregunta»"]
+      ]'
+      data-timer=""
+    >
+      <h1>¿Cómo te sientes?</h1>
+      <p class="lead"> </p>
+
+      <div class="btns" style="margin-bottom:6px">
+
+        <!-- Cliente agresivo -->
+        <button onclick="(function(btn){
+          const root=btn.closest('.center');
+          const arr=JSON.parse(root.getAttribute('data-agresivo'));
+          const msg=arr[Math.floor(Math.random()*arr.length)];
+          root.querySelector('.msg').innerHTML=msg;
+        })(this)">😡 Cliente agresivo</button>
+
+        <!-- Me siento saturado -->
+        <button onclick="(function(btn){
+          const root=btn.closest('.center');
+          const arr=JSON.parse(root.getAttribute('data-saturado'));
+          const msg=arr[Math.floor(Math.random()*arr.length)];
+          root.querySelector('.msg').innerHTML=msg;
+        })(this)">😢 Me siento saturado</button>
+
+        <!-- Necesito resetearme -->
+        <button onclick="(function(btn){
+          const root=btn.closest('.center');
+          root.querySelector('.msg').innerHTML =
+            'Frase breve: «Ahora, una cosa por vez».<br>Postura: espalda recta, mandíbula suelta, mirada a distancia.';
+        })(this)">😶 Necesito resetearme</button>
+
+        <!-- Reencuadre de pensamiento -->
+        <button onclick="(function(btn){
+          const root=btn.closest('.center');
+          const arr=JSON.parse(root.getAttribute('data-reencuadres'));
+          const [p,r]=arr[Math.floor(Math.random()*arr.length)];
+          root.querySelector('.msg').innerHTML =
+            '<div style=\\'text-align:left;max-width:740px;margin:0 auto\\'><strong>Pensamiento:</strong> '+p+
+            '<br><strong>Nuevo enfoque:</strong> '+r+'</div>';
+        })(this)">🧩 Reencuadre de pensamiento</button>
+
+        <!-- Respirar 5 s -->
+        <button onclick="(function(btn){
+          const root=btn.closest('.center');
+          const box=root.querySelector('.msg');
+          const tid=root.getAttribute('data-timer'); if(tid){ try{ clearInterval(Number(tid)); }catch(e){} }
+          let n=5;
+          box.innerHTML = '<div class=\\'countBox\\'><div class=\\'countNum\\'>5</div><div class=\\'hint\\'>Inhala suavemente mientras cuenta</div></div>';
+          const id=setInterval(function(){
+            const numEl=box.querySelector('.countNum');
+            if(!numEl){ clearInterval(id); root.setAttribute('data-timer',''); return; }
+            n--; if(n>=0) numEl.textContent=n;
+            if(n<0){
+              clearInterval(id); root.setAttribute('data-timer','');
+              box.innerHTML = '<div class=\\'countBox\\'><div class=\\'hint\\'>Ahora exhala lento por la boca.</div><div style=\\'font-size:14px;opacity:.9\\'>Cuando termines, vuelve a tu próxima acción.</div></div>';
+            }
+          },1000);
+          root.setAttribute('data-timer', String(id));
+        })(this)">🌬️ Respirar 5 s</button>
+      </div>
+
+      <div class="msg" aria-live="polite"></div>
+      <div class="foot"> </div>
+    </section>
+  </div>
+  `
+},
+
+
+
+      
 {
   name: 'IMPORTANTE - BOLETÍN CONTACT CENTER',
   wide: true,
