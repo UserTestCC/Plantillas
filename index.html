@@ -122,7 +122,15 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
 
  
 
-<h2 class="titulo-sombra">Respuestas Rápidas</h2>
+<h2 class="titulo-sombra">Respuestas Rápidas <img 
+    src="https://i.pinimg.com/originals/bb/f9/fd/bbf9fd2479c247dfb87cd51a3a7ae71d.gif"
+ 
+    alt="Decoración navideña"
+    style="max-width:100%; max-height:50px; height:auto; display:block; margin:auto;"
+  ></h2>
+
+
+
 
 <style>
 .titulo-sombra{
@@ -159,16 +167,35 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
   50% { transform: translateX(-10px); }
   100% { transform: translateX(10px); }
 }
-h5 {
+h4 {
   font-family: system-ui, sans-serif;
   text-align: center;
-  animation: mover 6s ease-in-out infinite;
+  animation: mover 8s ease-in-out infinite, luces 1.8s infinite;
   color: #e5e7eb;
   letter-spacing: .5px;
+  text-shadow: 0 0 5px rgba(255,255,255,.3);
+}
+
+/* Animación de luces */
+@keyframes luces {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #22c55e,
+      0 0 20px #22c55e;
+  }
+
+  50% {
+    opacity: 0.6;
+    text-shadow: 
+      0 0 2px #fff,
+      0 0 4px #22c55e;
+  }
 }
 </style>
 
-<h5>⚠️ Atajos</h5>
+ <h4> 🎁 🧣 FELIZ NAVIDAD 🧣 🎁 </h4>
 
 
 <div class="notices">
@@ -955,7 +982,14 @@ COLINEAL CORPORATION CIA LTDA`
     'LAZO JOSE – 0990659802\n' +
     'CEVALLOS OSWALDO – 0997096609\n' +
     'LUISA HIPATIA PLUA PILLASAGUA – 0980098308\n' +
+    ' CRISTIAN GUEVARA  –  0997763172\n' +
+    ' MERCY DE LAGO  –   0997620929\n' +
+    ' DIEGO PARDO –  0967318948\n' +
+
+
     'JONATHAN RAMIREZ – 0985814354'
+
+
 },
 
       // ================= SANTO DOMINGO =================
@@ -1929,26 +1963,26 @@ Avenida de la Cultura, Plaza Comercial Ecopark, Galpón 105
 
       /* ======= CARRUSEL AL FINAL ======= */
       {
-        name: 'Boletín Noviembre ',
+        name: 'Boletín diciembre ',
         wide: true,                 // <- hace la tarjeta de ancho completo
         body: `
 <x-carousel-card aspect="16/9" autoplay interval="8000">
    <span slot="title">
-    <a href="boletin_nov_ok.pdf" download 
+    <a href="boletin_diciembre25.pdf" download 
        style="color:#60a5fa; text-decoration:none; font-weight:700;">
       📄 Descargar Boletín
     </a>
   </span>
 
-  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585380/19nov_1_ayy6lb.jpg " alt="Boletín 0">
-  <img src=" https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585380/19nov_2_sxwyag.jpg " alt="Boletín 1">
-  <img src=" https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585381/19nov_3_m1w6hk.jpg  " alt="Boletín 2">
-  <img src="https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585381/19nov_4_z8xs31.jpg " alt="Boletín 3">
-  <img src=" https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585381/19nov_5_l7dyxp.jpg " alt="Boletín 4">
-  <img src=" https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585380/19nov_6_lfwkyo.jpg " alt="Boletín 5">
-  <img src=" https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585382/19nov_7_sc7zse.jpg " alt="Boletín 6">
-  <img src=" https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585382/19nov_8_vccbji.jpg " alt="Boletín 7">
-  <img src="https://res.cloudinary.com/dwbrg9r2n/image/upload/v1763585382/19nov_9_eyk26w.jpg  " alt="Boletín 8">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548970/Instalaciones_12_25_1__page-0001_gwmzfu.jpg  " alt="Boletín 0">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548970/Instalaciones_12_25_1__page-0002_xzvlqn.jpg " alt="Boletín 1">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548970/Instalaciones_12_25_1__page-0003_vqjbmo.jpg  " alt="Boletín 2">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548970/Instalaciones_12_25_1__page-0004_apebn5.jpg" alt="Boletín 3">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548970/Instalaciones_12_25_1__page-0005_jtjzwk.jpg " alt="Boletín 4">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548980/Instalaciones_12_25_1__page-0006_t4admo.jpg  " alt="Boletín 5">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548971/Instalaciones_12_25_1__page-0007_rve4ol.jpg " alt="Boletín 6">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548971/Instalaciones_12_25_1__page-0008_ppiqio.jpg " alt="Boletín 7">
+  <img src="  https://res.cloudinary.com/dwbrg9r2n/image/upload/v1765548971/Instalaciones_12_25_1__page-0009_mecvg2.jpg  " alt="Boletín 8">
   
 
   <span slot="caption">Desliza para ver todos los boletines.</span>
