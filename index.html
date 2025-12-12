@@ -43,10 +43,14 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:16px}
     .card{background:linear-gradient(180deg,#23313D,#0b1224);border:1px solid var(--line);border-radius:16px;padding:14px;position:relative}
     .card:hover{border-color:#1C2630}
-    .card h3{margin:0 44px 8px 0;font-size:16px}
+
+
+    .card h3{margin:0 44px 8px 0;font-size:15px;}
+
+
     .copy{position:absolute;top:10px;right:10px}
     .btn{cursor:pointer;border:1px solid var(--line);background:#0b1222;color:var(--ink);padding:8px 12px;border-radius:12px;font-weight:700}
-    .btn.small{font-size:12px;padding:6px 10px;border-radius:10px}
+    .btn.small{font-size:10px;padding:6px 10px;border-radius:10px}
     .btn.ghost{background:transparent}
     .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     .empty{padding:28px;text-align:center;color:#9ca3af}
@@ -122,12 +126,14 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
 
  
 
-<h2 class="titulo-sombra">Respuestas Rápidas <img 
+<h2 class="titulo-sombra">Respuestas Rápidas 
+    <img 
     src="https://i.pinimg.com/originals/bb/f9/fd/bbf9fd2479c247dfb87cd51a3a7ae71d.gif"
  
     alt="Decoración navideña"
     style="max-width:100%; max-height:50px; height:auto; display:block; margin:auto;"
-  ></h2>
+    >
+</h2>
 
 
 
@@ -148,7 +154,7 @@ dialog.viewer::backdrop{background:rgba(0,0,0,.7)}
 
 
 
-    <span class="pill">Última actualización 13 octubre 2025 - 16:23 </span> <span id="count" class="pill"> </span>
+    <span class="pill">Última actualización 12 DICIEMBRE 2025 - 12:00 </span> <span id="count" class="pill"> </span>
 
     <p class="muted">Escribe una palabra (ejemplo: <em>garantía</em>, <em>Perú</em>, <em>orden</em>, <em>no contactabilidad</em>).</p>
 
@@ -2120,7 +2126,7 @@ Avenida de la Cultura, Plaza Comercial Ecopark, Galpón 105
             if(a) text = text.replace(/\{\{\s*\}\}/g, a).replace(/\{\{\s*\}\}/g, a);
             try{
               await navigator.clipboard.writeText(text);
-              btn.textContent='Copiado ✔';
+              btn.textContent='Copiado🎅';
               setTimeout(()=>btn.textContent='Copiar',1200);
             }catch{ alert('No se pudo copiar.'); }
           });
